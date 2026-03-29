@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCWeb — Sistema de Gestão para Ginecologia & Obstetrícia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0F1C35;
+  --navy-mid: #1A2D50;
+  --violet: #6B3FA0;
+  --violet-light: #8B5FC0;
+  --violet-pale: #EDE5F7;
+  --pink: #D94F8A;
+  --pink-light: #F472B6;
+  --teal: #0EA5A0;
+  --teal-light: #2DD4BF;
+  --cream: #FBF8F5;
+  --white: #FFFFFF;
+  --gray: #64748B;
+  --gray-light: #F1F5F9;
+  --text: #1E293B;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+  --r: 14px;
+  --shadow: 0 4px 24px rgba(15,28,53,0.10);
+  --shadow-lg: 0 16px 56px rgba(15,28,53,0.15);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); color: var(--text); background: var(--cream); line-height: 1.6; overflow-x: hidden; }
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity .65s ease, transform .65s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity .65s ease, transform .65s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 6vw;
+  background: rgba(251,248,245,0.88);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(107,63,160,0.08);
+  transition: box-shadow .3s;
+}
+nav.scrolled { box-shadow: var(--shadow); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.1rem; color: white; font-style: italic;
+}
+.nav-logo-text { font-family: var(--serif); font-size: 1.3rem; color: var(--navy); font-style: italic; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { font-size: .875rem; font-weight: 500; color: var(--gray); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--violet); }
+.nav-cta {
+  background: var(--violet); color: white;
+  padding: 10px 22px; border-radius: 8px;
+  font-size: .875rem; font-weight: 600; text-decoration: none;
+  transition: all .2s;
+}
+.nav-cta:hover { background: var(--pink); transform: translateY(-1px); }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.5rem; color: var(--navy); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 6vw 80px;
+  background: var(--navy);
+  position: relative; overflow: hidden;
+}
+.hero-bg-circle {
+  position: absolute; border-radius: 50%; pointer-events: none;
+}
+.hero-bg-circle.c1 {
+  width: 600px; height: 600px; top: -100px; right: -150px;
+  background: radial-gradient(circle, rgba(107,63,160,0.35) 0%, transparent 70%);
+}
+.hero-bg-circle.c2 {
+  width: 400px; height: 400px; bottom: -80px; left: -80px;
+  background: radial-gradient(circle, rgba(217,79,138,0.2) 0%, transparent 70%);
+}
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(107,63,160,0.25); border: 1px solid rgba(139,95,192,0.4);
+  padding: 6px 14px; border-radius: 100px;
+  font-size: .75rem; font-weight: 600; color: #C4A0E8;
+  letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.5rem;
+  animation: fadeUp .6s ease both;
+}
+.hero-badge::before { content: '♀'; font-size: .9rem; }
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  line-height: 1.1; color: white; margin-bottom: 1.5rem;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero h1 em { font-style: italic; color: #C4A0E8; }
+
+.hero-desc {
+  font-size: 1.05rem; color: rgba(255,255,255,0.65);
+  max-width: 480px; line-height: 1.75; margin-bottom: 2.5rem;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  color: white; padding: 14px 28px; border-radius: 10px;
+  font-size: .95rem; font-weight: 600; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(107,63,160,0.4);
+  transition: all .25s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(107,63,160,0.5); }
+.btn-ghost {
+  background: rgba(255,255,255,0.1); color: white;
+  padding: 14px 28px; border-radius: 10px;
+  font-size: .95rem; font-weight: 600; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all .2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; animation: fadeUp .7s .4s ease both; }
+.hero-stat-num {
+  font-family: var(--serif); font-size: 2rem; color: white;
+  display: block; line-height: 1;
+}
+.hero-stat-lbl { font-size: .78rem; color: rgba(255,255,255,0.5); font-weight: 500; margin-top: 4px; }
+
+/* Hero mockup */
+.hero-visual { position: relative; animation: fadeUp .8s .2s ease both; }
+
+.app-window {
+  background: #1A1A2E; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.app-topbar {
+  background: #141427; padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.app-dots { display: flex; gap: 6px; }
+.app-dot { width: 10px; height: 10px; border-radius: 50%; }
+.app-dot.r { background: #FF5F57; }
+.app-dot.y { background: #FEBC2E; }
+.app-dot.g { background: #28C840; }
+.app-url {
+  flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
+  padding: 5px 10px; font-size: .72rem; color: rgba(255,255,255,0.4);
+  font-family: monospace;
+}
+.app-sidebar {
+  width: 160px; background: #110D2B; padding: 16px 0;
+  display: flex; flex-direction: column;
+}
+.sidebar-logo { padding: 8px 16px 20px; font-family: var(--serif); font-size: 1.1rem; color: white; font-style: italic; }
+.sidebar-item {
+  padding: 9px 16px; font-size: .74rem; color: rgba(255,255,255,0.45);
+  display: flex; align-items: center; gap: 8px; cursor: default;
+}
+.sidebar-item.active { background: rgba(107,63,160,0.3); color: white; border-left: 2px solid var(--violet-light); }
+.sidebar-icon { width: 14px; height: 14px; opacity: .6; font-size: .8rem; }
+
+.app-body { display: flex; }
+.app-content { flex: 1; padding: 20px; background: #F8F7FF; }
+.dash-welcome { font-size: .82rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+.dash-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
+.dash-card {
+  background: white; border-radius: 10px; padding: 14px;
+  border: 1px solid rgba(107,63,160,0.1);
+}
+.dash-card-num { font-family: var(--serif); font-size: 1.5rem; color: var(--navy); display: block; line-height: 1; }
+.dash-card-lbl { font-size: .67rem; color: var(--gray); margin-top: 3px; }
+.dash-card.v { border-top: 2px solid var(--violet); }
+.dash-card.p { border-top: 2px solid var(--pink); }
+.dash-quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.dash-quick-btn {
+  background: white; border-radius: 8px; padding: 10px 8px;
+  border: 1px solid rgba(107,63,160,0.1);
+  font-size: .65rem; color: var(--navy); font-weight: 600; text-align: center;
+}
+
+.float-card {
+  position: absolute; background: white; border-radius: 12px;
+  padding: 12px 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  animation: float 4s ease-in-out infinite;
+  white-space: nowrap;
+}
+.float-card.card1 { bottom: -16px; left: -20px; }
+.float-card.card2 { top: 20px; right: -20px; animation-delay: -2s; }
+.float-label { font-size: .68rem; color: var(--gray); font-weight: 600; }
+.float-value { font-size: .82rem; color: var(--navy); font-weight: 700; margin-top: 2px; display: flex; align-items: center; gap: 6px; }
+.float-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─── SECTION LAYOUT ─── */
+section { padding: 100px 6vw; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-tag { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--violet); margin-bottom: 12px; display: block; }
+.section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.9rem); color: var(--navy); line-height: 1.12; margin-bottom: 1rem; }
+.section-desc { color: var(--gray); font-size: 1rem; line-height: 1.75; max-width: 560px; }
+.centered { text-align: center; }
+.centered .section-desc { margin: 0 auto; }
+
+/* ─── DIFFERENTIALS ─── */
+.differentials { background: var(--cream); }
+.diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 3.5rem; }
+.diff-card {
+  background: white; border-radius: var(--r);
+  padding: 32px 28px; border: 1px solid rgba(107,63,160,0.1);
+  position: relative; overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.diff-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--pink));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.diff-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.diff-card:hover::after { transform: scaleX(1); }
+.diff-icon { font-size: 2rem; margin-bottom: 18px; display: block; }
+.diff-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.diff-card p { font-size: .88rem; color: var(--gray); line-height: 1.65; }
+
+/* ─── MODULES TABS ─── */
+.modules { background: var(--navy); }
+.modules .section-tag { color: #C4A0E8; }
+.modules .section-title { color: white; }
+.modules .section-desc { color: rgba(255,255,255,0.55); }
+
+.tabs-nav {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 3rem; margin-bottom: 2rem;
+}
+.tab-btn {
+  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.12); padding: 9px 18px;
+  border-radius: 8px; font-size: .82rem; font-weight: 600; cursor: pointer;
+  transition: all .2s; font-family: var(--sans);
+}
+.tab-btn:hover { background: rgba(107,63,160,0.3); color: white; }
+.tab-btn.active { background: var(--violet); color: white; border-color: var(--violet); }
+
+.tab-content { display: none; }
+.tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+.tab-info h3 { font-family: var(--serif); font-size: 2rem; color: white; margin-bottom: 1rem; line-height: 1.2; }
+.tab-info p { color: rgba(255,255,255,0.6); font-size: .95rem; line-height: 1.75; margin-bottom: 1.5rem; }
+.tab-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.tab-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: .88rem; color: rgba(255,255,255,0.75);
+}
+.tab-features li::before {
+  content: '✓'; color: var(--teal-light); font-weight: 700; font-size: .8rem;
+  background: rgba(45,212,191,0.15); width: 20px; height: 20px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+.tab-screen {
+  background: white; border-radius: 14px;
+  overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.screen-bar {
+  background: #F8F7FF; padding: 10px 14px;
+  display: flex; align-items: center; gap: 6px;
+  border-bottom: 1px solid rgba(107,63,160,0.1);
+}
+.screen-dot { width: 8px; height: 8px; border-radius: 50%; }
+.screen-dot.r { background: #FF5F57; }
+.screen-dot.y { background: #FEBC2E; }
+.screen-dot.g { background: #28C840; }
+.screen-title { font-size: .7rem; color: var(--gray); margin-left: 6px; font-weight: 600; }
+.screen-body { padding: 20px; }
+
+/* Screen: agenda */
+.agenda-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.agenda-title { font-size: .88rem; font-weight: 700; color: var(--navy); }
+.agenda-date { font-size: .72rem; color: var(--gray); }
+.agenda-item {
+  display: flex; gap: 12px; align-items: center;
+  padding: 10px; border-radius: 8px; margin-bottom: 8px;
+  background: var(--gray-light);
+}
+.agenda-time { font-size: .72rem; font-weight: 700; color: var(--violet); width: 36px; flex-shrink: 0; }
+.agenda-name { font-size: .78rem; font-weight: 600; color: var(--navy); }
+.agenda-type { font-size: .66rem; color: var(--gray); }
+.agenda-tag { font-size: .66rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: auto; white-space: nowrap; flex-shrink: 0; }
+.tag-agendado { background: #EDE5F7; color: var(--violet); }
+.tag-confirmado { background: #D1FAE5; color: #065F46; }
+.tag-cal { background: #FFF3CD; color: #92640B; }
+
+/* Screen: prontuario */
+.pront-tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+.pront-tab {
+  font-size: .65rem; font-weight: 700; padding: 4px 10px;
+  border-radius: 6px; cursor: default;
+  background: var(--gray-light); color: var(--gray);
+}
+.pront-tab.active { background: var(--violet); color: white; }
+.pront-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.pront-field { background: var(--gray-light); border-radius: 6px; padding: 8px 10px; }
+.pront-field-lbl { font-size: .6rem; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: .06em; }
+.pront-field-val { font-size: .75rem; color: var(--navy); font-weight: 500; margin-top: 2px; }
+
+/* Screen: gestantes */
+.gest-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.gest-title { font-size: .82rem; font-weight: 700; color: var(--navy); }
+.gest-count { font-size: .7rem; color: var(--violet); font-weight: 600; }
+.gest-row {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 8px;
+  padding: 9px 10px; border-radius: 7px; margin-bottom: 6px;
+  background: var(--gray-light); align-items: center;
+}
+.gest-name { font-size: .75rem; font-weight: 600; color: var(--violet); }
+.gest-ig { font-size: .72rem; font-weight: 700; color: var(--pink); }
+.gest-dpp { font-size: .68rem; color: var(--gray); }
+.gest-hosp { font-size: .68rem; color: var(--gray); }
+
+/* Screen: exames */
+.exam-tabs { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
+.exam-tab {
+  font-size: .65rem; font-weight: 700; padding: 4px 9px;
+  border-radius: 6px; background: var(--gray-light); color: var(--gray);
+}
+.exam-tab.active { background: var(--violet); color: white; }
+.exam-atalhos { margin-bottom: 12px; }
+.exam-atalhos-lbl { font-size: .65rem; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+.exam-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.exam-tag { font-size: .63rem; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: var(--violet-pale); color: var(--violet); }
+.exam-list-title { font-size: .72rem; font-weight: 700; color: var(--teal); margin: 10px 0 6px; }
+.exam-chk { display: flex; align-items: center; gap: 6px; font-size: .7rem; color: var(--navy); margin-bottom: 4px; }
+.chk-box { width: 12px; height: 12px; border-radius: 3px; background: white; border: 1.5px solid #CBD5E1; flex-shrink: 0; }
+.chk-box.checked { background: var(--violet); border-color: var(--violet); }
+
+/* Screen: laudos */
+.laudo-type { font-size: .72rem; font-weight: 700; color: var(--violet); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.laudo-sel { background: var(--violet-pale); padding: 4px 10px; border-radius: 6px; font-size: .68rem; font-weight: 600; color: var(--violet); }
+.laudo-section { margin-bottom: 12px; }
+.laudo-section-title { font-size: .65rem; font-weight: 700; color: var(--violet); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; border-bottom: 1px solid rgba(107,63,160,0.1); padding-bottom: 4px; }
+.laudo-fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.laudo-field { background: var(--gray-light); border-radius: 5px; padding: 6px 8px; font-size: .65rem; color: var(--gray); }
+
+/* Screen: obstetrica */
+.obs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.obs-title { font-size: .82rem; font-weight: 700; color: var(--pink); }
+.obs-ig { background: rgba(217,79,138,0.1); color: var(--pink); font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+.obs-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
+.obs-tab { font-size: .6rem; font-weight: 700; padding: 3px 7px; border-radius: 5px; background: var(--gray-light); color: var(--gray); }
+.obs-tab.active { background: var(--pink); color: white; }
+.usg-table { width: 100%; font-size: .62rem; border-collapse: collapse; }
+.usg-table th { background: rgba(217,79,138,0.1); color: var(--pink); font-weight: 700; padding: 5px 6px; text-align: left; }
+.usg-table td { padding: 5px 6px; border-bottom: 1px solid rgba(107,63,160,0.06); color: var(--navy); font-weight: 500; }
+.usg-table tr:last-child td { border: none; }
+.ig-badge { color: var(--pink); font-weight: 700; }
+
+/* Screen: financeiro */
+.fin-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.fin-card { background: var(--gray-light); border-radius: 8px; padding: 10px; }
+.fin-card-lbl { font-size: .65rem; color: var(--gray); font-weight: 600; margin-bottom: 4px; }
+.fin-card-val { font-size: 1rem; font-weight: 700; color: var(--navy); font-family: var(--serif); }
+.fin-card.green .fin-card-val { color: #059669; }
+.fin-row { display: grid; grid-template-columns: 1fr 2fr 1fr 1fr; gap: 8px; padding: 8px 10px; border-radius: 7px; margin-bottom: 5px; background: var(--gray-light); font-size: .68rem; align-items: center; }
+.fin-patient { font-weight: 600; color: var(--navy); }
+.fin-type { color: var(--gray); }
+.fin-val { font-weight: 700; color: var(--navy); text-align: right; }
+
+/* Screen: cartão PN */
+.cartao-pn { background: linear-gradient(135deg, #5B21B6, #9D3E8A); border-radius: 12px; padding: 18px; color: white; }
+.cartao-header { margin-bottom: 14px; }
+.cartao-greeting { font-family: var(--serif); font-size: 1rem; color: white; margin-bottom: 4px; }
+.cartao-ig { font-size: .78rem; color: rgba(255,255,255,0.75); }
+.cartao-dpp { font-size: .72rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.cartao-progress { background: rgba(255,255,255,0.2); border-radius: 10px; height: 6px; margin: 8px 0; }
+.cartao-progress-bar { background: white; height: 100%; border-radius: 10px; width: 92%; }
+.cartao-semana { background: rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+.cartao-semana-icon { font-size: 1.5rem; }
+.cartao-semana-title { font-size: .75rem; font-weight: 700; }
+.cartao-semana-desc { font-size: .65rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+/* ─── PRENATAL FEATURE ─── */
+.prenatal { background: var(--cream); }
+.prenatal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+.prenatal-features { display: flex; flex-direction: column; gap: 20px; }
+.pn-feature {
+  display: flex; gap: 16px;
+  padding: 20px; border-radius: 12px;
+  border: 1px solid rgba(107,63,160,0.1);
+  background: white;
+  transition: transform .25s, box-shadow .25s;
+}
+.pn-feature:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+.pn-feature-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+.pn-feature h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.pn-feature p { font-size: .84rem; color: var(--gray); line-height: 1.6; }
+
+.prenatal-visual { position: relative; }
+.phone-mockup {
+  width: 260px; margin: 0 auto;
+  background: #1A1A2E; border-radius: 36px;
+  padding: 12px; box-shadow: 0 24px 64px rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+.phone-screen {
+  background: linear-gradient(135deg, #5B21B6, #9D3E8A);
+  border-radius: 26px; overflow: hidden;
+  padding: 20px;
+}
+
+/* ─── METRICS ─── */
+.metrics {
+  background: linear-gradient(135deg, var(--violet) 0%, #9D3E8A 50%, var(--pink) 100%);
+  padding: 80px 6vw;
+}
+.metrics-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+.metrics-title { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); color: white; margin-bottom: 3rem; }
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.metric-num { font-family: var(--serif); font-size: 3rem; color: white; display: block; line-height: 1; }
+.metric-lbl { font-size: .82rem; color: rgba(255,255,255,0.65); margin-top: 6px; font-weight: 500; }
+
+/* ─── ABOUT / DIFFERENCIAL ─── */
+.about { background: white; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.about-quote {
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  border-radius: 20px; padding: 40px;
+  color: white; position: relative; overflow: hidden;
+}
+.about-quote::before {
+  content: '"'; position: absolute; top: -10px; left: 20px;
+  font-family: var(--serif); font-size: 8rem; color: rgba(107,63,160,0.3);
+  line-height: 1;
+}
+.about-quote-text {
+  font-family: var(--serif); font-size: 1.25rem; color: white;
+  line-height: 1.6; font-style: italic; position: relative; z-index: 1;
+  margin-bottom: 20px;
+}
+.about-quote-author { font-size: .82rem; color: rgba(255,255,255,0.55); font-weight: 500; }
+.about-quote-author strong { color: #C4A0E8; }
+
+.about-points { display: flex; flex-direction: column; gap: 24px; }
+.about-point { display: flex; gap: 16px; }
+.about-point-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--violet-pale); display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.about-point h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.about-point p { font-size: .85rem; color: var(--gray); line-height: 1.65; }
+
+/* ─── PRICING ─── */
+.pricing { background: var(--gray-light); }
+.pricing .section-desc { margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 3.5rem; max-width: 960px; margin-left: auto; margin-right: auto; }
+.plan {
+  background: white; border-radius: 16px; padding: 36px 28px;
+  border: 1.5px solid rgba(107,63,160,0.1);
+  position: relative; text-align: left;
+  transition: transform .25s, box-shadow .25s;
+}
+.plan:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.plan.featured {
+  background: var(--navy); border-color: var(--navy);
+  transform: scale(1.03);
+}
+.plan.featured:hover { transform: scale(1.03) translateY(-4px); }
+.plan-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  color: white; font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 4px 14px; border-radius: 20px; white-space: nowrap;
+}
+.plan-name { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); margin-bottom: 8px; }
+.plan.featured .plan-name { color: #C4A0E8; }
+.plan-price { font-family: var(--serif); margin-bottom: 6px; }
+.plan-price-val { font-size: 2.5rem; color: var(--navy); }
+.plan.featured .plan-price-val { color: white; }
+.plan-price-period { font-size: .8rem; color: var(--gray); font-family: var(--sans); }
+.plan.featured .plan-price-period { color: rgba(255,255,255,0.5); }
+.plan-desc { font-size: .82rem; color: var(--gray); margin-bottom: 24px; line-height: 1.5; }
+.plan.featured .plan-desc { color: rgba(255,255,255,0.55); }
+.plan-divider { height: 1px; background: rgba(107,63,160,0.1); margin-bottom: 20px; }
+.plan.featured .plan-divider { background: rgba(255,255,255,0.12); }
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.plan-features li { display: flex; align-items: flex-start; gap: 8px; font-size: .84rem; color: var(--text); }
+.plan.featured .plan-features li { color: rgba(255,255,255,0.8); }
+.plan-features li::before { content: '✓'; color: var(--teal); font-weight: 700; font-size: .75rem; flex-shrink: 0; margin-top: 2px; }
+.plan-cta {
+  display: block; text-align: center; padding: 12px;
+  border-radius: 9px; font-weight: 600; font-size: .9rem; text-decoration: none;
+  transition: all .2s;
+}
+.plan-cta.outline { border: 1.5px solid rgba(107,63,160,0.2); color: var(--violet); }
+.plan-cta.outline:hover { background: var(--violet-pale); }
+.plan-cta.solid { background: linear-gradient(135deg, var(--violet), var(--pink)); color: white; }
+.plan-cta.solid:hover { opacity: .9; transform: translateY(-1px); }
+
+/* ─── CONTACT ─── */
+.contact { background: var(--cream); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.contact-info { padding-top: 1rem; }
+.contact-info p { color: var(--gray); font-size: .97rem; line-height: 1.75; margin-bottom: 2rem; }
+.contact-detail { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.contact-detail-icon { font-size: 1.2rem; }
+.contact-detail-text { font-size: .9rem; color: var(--navy); font-weight: 500; }
+
+.contact-form {
+  background: white; border-radius: 20px; padding: 40px;
+  box-shadow: var(--shadow-lg); border: 1px solid rgba(107,63,160,0.08);
+}
+.form-title { font-family: var(--serif); font-size: 1.6rem; color: var(--navy); margin-bottom: 24px; }
+.form-group { margin-bottom: 18px; }
+.form-label { font-size: .82rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; display: block; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 12px 14px; border-radius: 9px;
+  border: 1.5px solid rgba(107,63,160,0.15); background: var(--gray-light);
+  font-size: .9rem; color: var(--navy); font-family: var(--sans);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--violet); box-shadow: 0 0 0 3px rgba(107,63,160,0.1);
+  background: white;
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit {
+  width: 100%; padding: 14px;
+  background: linear-gradient(135deg, var(--violet), var(--pink));
+  color: white; border: none; border-radius: 10px;
+  font-size: 1rem; font-weight: 700; cursor: pointer;
+  font-family: var(--sans); transition: all .25s;
+  box-shadow: 0 4px 16px rgba(107,63,160,0.3);
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107,63,160,0.4); }
+.form-success {
+  display: none; text-align: center; padding: 20px;
+}
+.form-success h3 { font-family: var(--serif); font-size: 1.4rem; color: var(--navy); margin-bottom: 8px; }
+.form-success p { color: var(--gray); font-size: .9rem; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy); padding: 60px 6vw 30px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto 3rem; }
+.footer-brand .nav-logo { margin-bottom: 1rem; }
+.footer-brand p { font-size: .85rem; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 280px; }
+.footer-col h4 { font-size: .8rem; font-weight: 700; color: white; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: .85rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color .2s; }
+.footer-col a:hover { color: #C4A0E8; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.footer-bottom p { font-size: .78rem; color: rgba(255,255,255,0.3); }
+.footer-bottom a { color: rgba(255,255,255,0.3); text-decoration: none; }
+.footer-badge { background: rgba(107,63,160,0.25); color: #C4A0E8; font-size: .72rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(107,63,160,0.3); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-mobile-toggle { display: block; }
+  .hero-grid, .tab-content.active, .prenatal-grid, .about-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .diff-grid, .metrics-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.2rem; }
+  .plan.featured { transform: scale(1); }
+  .tabs-nav { gap: 6px; }
+  .tab-btn { font-size: .76rem; padding: 8px 12px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+  .app-sidebar { display: none; }
+  .hero-visual { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">S</div>
+    <span class="nav-logo-text">SCWeb</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#prenatal">Pré-Natal</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="#contato" class="nav-cta">Solicitar Demo</a>
+  <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">Sistema Especializado em Saúde da Mulher</div>
+      <h1>Gestão completa para sua clínica de <em>Ginecologia & Obstetrícia</em></h1>
+      <p class="hero-desc">Desenvolvido por um ginecologista e obstetra, o SCWeb reúne em um só lugar tudo que sua clínica precisa: prontuário eletrônico, pré-natal, laudos de USG, agenda integrada e muito mais.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary">Solicitar Demonstração</a>
+        <a href="#modulos" class="btn-ghost">Ver Funcionalidades</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="hero-stat-num">28.000+</span>
+          <span class="hero-stat-lbl">Pacientes gerenciadas</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-lbl">Web, sem instalação</span>
+        </div>
+        <div>
+          <span class="hero-stat-num">GO</span>
+          <span class="hero-stat-lbl">Feito por especialistas</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="app-window">
+        <div class="app-topbar">
+          <div class="app-dots">
+            <div class="app-dot r"></div>
+            <div class="app-dot y"></div>
+            <div class="app-dot g"></div>
+          </div>
+          <div class="app-url">scweb.com.br — AGOM Saúde da Mulher</div>
+        </div>
+        <div class="app-body">
+          <div class="app-sidebar">
+            <div class="sidebar-logo">SCWeb</div>
+            <div class="sidebar-item active"><span>📊</span> Dashboard</div>
+            <div class="sidebar-item"><span>⏱</span> Sala de Espera</div>
+            <div class="sidebar-item"><span>👥</span> Pacientes</div>
+            <div class="sidebar-item"><span>📅</span> Agenda</div>
+            <div class="sidebar-item"><span>🔬</span> Exames</div>
+            <div class="sidebar-item"><span>📋</span> Laudos</div>
+            <div class="sidebar-item"><span>💊</span> Receituários</div>
+            <div class="sidebar-item"><span>🤱</span> Gestantes</div>
+          </div>
+          <div class="app-content">
+            <div class="dash-welcome">Olá, Dr(a)! Resumo de hoje</div>
+            <div class="dash-cards">
+              <div class="dash-card v">
+                <span class="dash-card-num">28.306</span>
+                <div class="dash-card-lbl">Pacientes cadastradas</div>
+              </div>
+              <div class="dash-card p">
+                <span class="dash-card-num">25</span>
+                <div class="dash-card-lbl">Agendamentos hoje</div>
+              </div>
+              <div class="dash-card">
+                <span class="dash-card-num">3</span>
+                <div class="dash-card-lbl">Aguardando</div>
+              </div>
+              <div class="dash-card">
+                <span class="dash-card-num">1</span>
+                <div class="dash-card-lbl">Em atendimento</div>
+              </div>
+            </div>
+            <div class="dash-quick">
+              <div class="dash-quick-btn">+ Nova Paciente</div>
+              <div class="dash-quick-btn">📅 Agendar</div>
+              <div class="dash-quick-btn">⏱ Sala Espera</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card card1">
+        <div class="float-label">Faturamento / mês</div>
+        <div class="float-value" style="color:#059669; font-size:.9rem;">R$ 11.032,75 ↑</div>
+      </div>
+      <div class="float-card card2">
+        <div class="float-label">Gestante em Acompanhamento</div>
+        <div class="float-value"><span class="float-dot" style="background:var(--pink)"></span> 38s 5d — DPP: 07/04</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIALS -->
+<section class="differentials" id="diferenciais">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">Por que o SCWeb?</span>
+      <h2 class="section-title">Feito por quem vive a rotina da clínica</h2>
+      <p class="section-desc">Diferente dos sistemas genéricos, o SCWeb foi idealizado por um médico ginecologista e obstetra. Cada funcionalidade reflete a prática real do consultório.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal" style="transition-delay:.1s">
+        <span class="diff-icon">👩‍⚕️</span>
+        <h3>Especializado em GO</h3>
+        <p>Módulos exclusivos para Ginecologia e Obstetrícia: ficha ginecológica completa, pré-natal, vitalidade fetal, mastologia, laços e muito mais. Nada genérico.</p>
+      </div>
+      <div class="diff-card reveal" style="transition-delay:.2s">
+        <span class="diff-icon">📱</span>
+        <p><h3>Cartão de Pré-Natal Digital</h3></p>
+        <p>A gestante acessa o próprio cartão pelo celular, com IG em tempo real, DPP, histórico das consultas e conteúdo educativo semana a semana.</p>
+      </div>
+      <div class="diff-card reveal" style="transition-delay:.3s">
+        <span class="diff-icon">🔬</span>
+        <h3>Laudos de USG Estruturados</h3>
+        <p>Laudos de USG Transvaginal, 1º e 2º Trimestre, Morfológica, Mamária e Colposcopia com campos inteligentes e cálculo automático de volumes.</p>
+      </div>
+      <div class="diff-card reveal" style="transition-delay:.1s">
+        <span class="diff-icon">📊</span>
+        <h3>Gráficos Clínicos Automáticos</h3>
+        <p>Gráfico de Peso Fetal (Hadlock), Altura Uterina (Martinelli), IMC Gestacional (Atalah) e histórico laboratorial comparativo em tabela visual.</p>
+      </div>
+      <div class="diff-card reveal" style="transition-delay:.2s">
+        <span class="diff-icon">🗓</span>
+        <h3>Integração Google Calendar</h3>
+        <p>Sincronize sua agenda do Google com o SCWeb. Consultas agendadas online aparecem automaticamente na grade de horários da clínica.</p>
+      </div>
+      <div class="diff-card reveal" style="transition-delay:.3s">
+        <span class="diff-icon">💻</span>
+        <h3>100% Web, Sem Instalação</h3>
+        <p>Acesse de qualquer computador, tablet ou celular. Sem instalação, sem servidor local. Seus dados seguros na nuvem, disponíveis sempre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES TABS -->
+<section class="modules" id="modulos">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-tag">Funcionalidades Completas</span>
+      <h2 class="section-title" style="color:white">Tudo que sua clínica precisa<br><em style="font-style:italic; color:#C4A0E8">em um só sistema</em></h2>
+      <p class="section-desc">Conheça os módulos do SCWeb — cada um projetado para simplificar e qualificar o atendimento ginecológico e obstétrico.</p>
+    </div>
+
+    <div class="tabs-nav reveal">
+      <button class="tab-btn active" onclick="showTab('agenda')">📅 Agenda</button>
+      <button class="tab-btn" onclick="showTab('prontuario')">📋 Prontuário</button>
+      <button class="tab-btn" onclick="showTab('exames')">🔬 Exames</button>
+      <button class="tab-btn" onclick="showTab('laudos')">🖨 Laudos USG</button>
+      <button class="tab-btn" onclick="showTab('gestantes')">🤱 Gestantes</button>
+      <button class="tab-btn" onclick="showTab('obstetrica')">👶 Pré-Natal</button>
+      <button class="tab-btn" onclick="showTab('financeiro')">💰 Financeiro</button>
+    </div>
+
+    <!-- AGENDA -->
+    <div class="tab-content active" id="tab-agenda">
+      <div class="tab-info reveal-left">
+        <h3>Agenda Inteligente</h3>
+        <p>Gerencie os agendamentos da clínica com uma grade visual por médico, com suporte a múltiplos turnos, bloqueios e integração com o Google Calendar.</p>
+        <ul class="tab-features">
+          <li>Grade de horários por médico, com Manhã, Tarde e Dia</li>
+          <li>Integração direta com Google Calendar — consultas importadas automaticamente</li>
+          <li>Status de confirmação: Agendado, Confirmado, Cancelado</li>
+          <li>Turno Extra para encaixes e urgências</li>
+          <li>Busca rápida de pacientes por nome ou RGHC</li>
+          <li>Exibição do convênio e valor diretamente na agenda</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Agenda — 30/03/2026</span>
+        </div>
+        <div class="screen-body">
+          <div class="agenda-header">
+            <div class="agenda-title">Grade de Horários</div>
+            <div class="agenda-date">Dr. Silvio Martinelli • 0 vagas / 20 total</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">14:00</div>
+            <div><div class="agenda-name">ANA HELENA D ACARDIA</div><div class="agenda-type">Consulta · Google Calendar</div></div>
+            <div class="agenda-tag tag-cal">📅 Importado</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">14:30</div>
+            <div><div class="agenda-name">JESSICA ALVES PAIXAO</div><div class="agenda-type">Consulta · ½ particular · R$ 400,00</div></div>
+            <div class="agenda-tag tag-agendado">Agendado</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">14:45</div>
+            <div><div class="agenda-name">EDILEINE MARIA DE OLIVEIRA</div><div class="agenda-type">Consulta · Bradesco</div></div>
+            <div class="agenda-tag tag-confirmado">Confirmado</div>
+          </div>
+          <div class="agenda-item">
+            <div class="agenda-time">15:00</div>
+            <div><div class="agenda-name">KARINE MENEZES DA SILVA</div><div class="agenda-type">Consulta · Sul América</div></div>
+            <div class="agenda-tag tag-confirmado">Confirmado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRONTUARIO -->
+    <div class="tab-content" id="tab-prontuario">
+      <div class="tab-info reveal-left">
+        <h3>Prontuário Ginecológico Completo</h3>
+        <p>Ficha estruturada em abas para registro eficiente: queixas, antecedentes, exame físico, medicações, DIU, implantes, diagnósticos e documentos.</p>
+        <ul class="tab-features">
+          <li>Identificação completa com foto da paciente</li>
+          <li>Queixas e histórico da consulta atual</li>
+          <li>Antecedentes pessoais, familiares e ginecológicos</li>
+          <li>Registro de DIU, Implanon e Implantes</li>
+          <li>Procedimentos a Laser com histórico</li>
+          <li>Diagnósticos por CID-10 e documentos em PDF</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Ficha Ginecológica — VIVIANI LIMA MORIER</span>
+        </div>
+        <div class="screen-body">
+          <div class="pront-tabs">
+            <div class="pront-tab active">IDENT</div>
+            <div class="pront-tab">QUEIXAS</div>
+            <div class="pront-tab">ANT PES/FAM</div>
+            <div class="pront-tab">ANT GINEC</div>
+            <div class="pront-tab">GEST ANT</div>
+            <div class="pront-tab">EXAME FÍSICO</div>
+            <div class="pront-tab">DIU</div>
+            <div class="pront-tab">DIAGNÓSTICOS</div>
+          </div>
+          <div class="pront-field-row">
+            <div class="pront-field"><div class="pront-field-lbl">Nome</div><div class="pront-field-val">VIVIANI LIMA MORIER</div></div>
+            <div class="pront-field"><div class="pront-field-lbl">RGHC</div><div class="pront-field-val">02710/SM</div></div>
+          </div>
+          <div class="pront-field-row">
+            <div class="pront-field"><div class="pront-field-lbl">Idade</div><div class="pront-field-val">42 anos</div></div>
+            <div class="pront-field"><div class="pront-field-lbl">Estado Civil</div><div class="pront-field-val">Casada</div></div>
+          </div>
+          <div class="pront-field-row">
+            <div class="pront-field"><div class="pront-field-lbl">Convênio</div><div class="pront-field-val">2 convênios</div></div>
+            <div class="pront-field"><div class="pront-field-lbl">1ª Consulta</div><div class="pront-field-val">28/11/2008</div></div>
+          </div>
+          <div class="pront-field-row">
+            <div class="pront-field"><div class="pront-field-lbl">Profissão</div><div class="pront-field-val">Assist. de Pesquisa Clínica</div></div>
+            <div class="pront-field"><div class="pront-field-lbl">Email</div><div class="pront-field-val">viviani.morier@gmail.com</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXAMES -->
+    <div class="tab-content" id="tab-exames">
+      <div class="tab-info reveal-left">
+        <h3>Solicitação de Exames Inteligente</h3>
+        <p>Solicite exames laboratoriais e de imagem com perfis pré-configurados (atalhos) e visualize o histórico laboratorial em tabela comparativa por data.</p>
+        <ul class="tab-features">
+          <li>Atalhos por perfil clínico: Pré-Natal, SOP, Climatério, Osteopenia, Trombofilia...</li>
+          <li>Categorias organizadas: Hemograma, Bioquímica, Hormônios, Sorologias, USG, Biópsias</li>
+          <li>Histórico comparativo em tabela por datas de coleta</li>
+          <li>Mamografia, USG Ginecológico, Densitometria e Colposcopia</li>
+          <li>Impressão direta da solicitação para a paciente</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Exames — RAFAELA JULIA CUNHA SILVA</span>
+        </div>
+        <div class="screen-body">
+          <div class="exam-tabs">
+            <div class="exam-tab active">SOLICITAÇÃO</div>
+            <div class="exam-tab">HEMOGRAMA</div>
+            <div class="exam-tab">BIOQUÍMICA</div>
+            <div class="exam-tab">HORMÔNIOS</div>
+            <div class="exam-tab">USG GINEC.</div>
+            <div class="exam-tab">MAMOGRAFIA</div>
+          </div>
+          <div class="exam-atalhos">
+            <div class="exam-atalhos-lbl">Atalhos — Pré-marcar por perfil</div>
+            <div class="exam-tags">
+              <div class="exam-tag">Climatério</div>
+              <div class="exam-tag">Pré-Natal</div>
+              <div class="exam-tag">SOP</div>
+              <div class="exam-tag">Osteopenia</div>
+              <div class="exam-tag">Rotina &gt; 40 anos</div>
+              <div class="exam-tag">Trombofilias</div>
+            </div>
+          </div>
+          <div class="exam-list-title">Hemograma e Coagulação</div>
+          <div class="exam-chk"><div class="chk-box checked"></div> Hemograma completo</div>
+          <div class="exam-chk"><div class="chk-box checked"></div> Tipagem sanguínea (ABO/Rh)</div>
+          <div class="exam-chk"><div class="chk-box"></div> Coombs indireto</div>
+          <div class="exam-list-title">Gestação</div>
+          <div class="exam-chk"><div class="chk-box checked"></div> Teste bioquímico para aneuploidias</div>
+          <div class="exam-chk"><div class="chk-box"></div> USG morfológica de 1º trimestre</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LAUDOS -->
+    <div class="tab-content" id="tab-laudos">
+      <div class="tab-info reveal-left">
+        <h3>Laudos de USG Estruturados</h3>
+        <p>Emita laudos completos com campos inteligentes, cálculos automáticos e texto estruturado. Específicos para a prática ginecológica e obstétrica.</p>
+        <ul class="tab-features">
+          <li>USG Transvaginal com campos para útero, ovários, endométrio e colo</li>
+          <li>USG 1º Trimestre e Morfológicas de 1º e 2º Trimestre</li>
+          <li>USG 2º/3º Trimestre com biometria fetal completa</li>
+          <li>USG Mamária com campos BIRADS</li>
+          <li>Colposcopia com achados e impressão diagnóstica</li>
+          <li>Cálculo automático de volumes e percentis</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Novo Laudo — USG Transvaginal</span>
+        </div>
+        <div class="screen-body">
+          <div class="laudo-type">Tipo de Laudo: <div class="laudo-sel">USG Transvaginal ▾</div></div>
+          <div style="font-size:.65rem; color:var(--gray); margin-bottom:10px; background:var(--gray-light); padding:6px 10px; border-radius:6px;">Outros: USG 1º Trim • Morfológica 1º Trim • Morfológica 2º Trim • USG 2º/3º Trim • USG Mamária • Colposcopia</div>
+          <div class="laudo-section">
+            <div class="laudo-section-title">Útero</div>
+            <div class="laudo-fields">
+              <div class="laudo-field">Posição: —</div>
+              <div class="laudo-field">Comprimento: — cm</div>
+              <div class="laudo-field">Largura: — cm</div>
+              <div class="laudo-field">Espessura: — cm</div>
+              <div class="laudo-field">Vol. (auto): V=0,523×C×L×E</div>
+              <div class="laudo-field">Miométrio: —</div>
+            </div>
+          </div>
+          <div class="laudo-section">
+            <div class="laudo-section-title">Ovários</div>
+            <div class="laudo-fields">
+              <div class="laudo-field">OD: — × — mm</div>
+              <div class="laudo-field">OE: — × — mm</div>
+              <div class="laudo-field">Aspecto: —</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GESTANTES -->
+    <div class="tab-content" id="tab-gestantes">
+      <div class="tab-info reveal-left">
+        <h3>Painel de Gestantes</h3>
+        <p>Acompanhe todas as gestantes em um painel visual com IG calculada automaticamente, DPP, hospital de preferência e código de cores por risco.</p>
+        <ul class="tab-features">
+          <li>IG calculada automaticamente em semanas e dias</li>
+          <li>Código de cores: IG &lt; 34s (roxo), 34–36s (amarelo), ≥ 37s (verde/termo)</li>
+          <li>DPP e hospital de parto para cada gestante</li>
+          <li>Histórico obstétrico: G/P/A (Gesta/Para/Aborto)</li>
+          <li>Acesso direto ao prontuário de cada gestante</li>
+          <li>Observações inline editáveis diretamente no painel</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Painel de Gestantes em Acompanhamento</span>
+        </div>
+        <div class="screen-body">
+          <div class="gest-header">
+            <div class="gest-title">Gestantes em Acompanhamento</div>
+            <div class="gest-count">8 gestantes cadastradas</div>
+          </div>
+          <div class="gest-row" style="background:rgba(107,63,160,0.1); font-size:.65rem; font-weight:700; color:var(--violet);">
+            <div>Nome</div><div>IG</div><div>DPP</div><div>Hospital</div>
+          </div>
+          <div class="gest-row">
+            <div class="gest-name">FERNANDA TUNES RODRIGUES</div>
+            <div class="gest-ig" style="color:#059669">38s 6d</div>
+            <div class="gest-dpp">07/04/2026</div>
+            <div class="gest-hosp">Santa Joana</div>
+          </div>
+          <div class="gest-row">
+            <div class="gest-name">ROSEANE DA SILVA GONÇALVES</div>
+            <div class="gest-ig" style="color:#D97706">36s 1d</div>
+            <div class="gest-dpp">26/04/2026</div>
+            <div class="gest-hosp">Sao Luiz Star</div>
+          </div>
+          <div class="gest-row">
+            <div class="gest-name">DEBORA PIMENTA GERMANO</div>
+            <div class="gest-ig" style="color:var(--violet)">30s 6d</div>
+            <div class="gest-dpp">02/06/2026</div>
+            <div class="gest-hosp">—</div>
+          </div>
+          <div class="gest-row">
+            <div class="gest-name">KARY MARQUES DA SILVA</div>
+            <div class="gest-ig" style="color:var(--violet)">19s 2d</div>
+            <div class="gest-dpp">22/08/2026</div>
+            <div class="gest-hosp">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBSTETRICA -->
+    <div class="tab-content" id="tab-obstetrica">
+      <div class="tab-info reveal-left">
+        <h3>Ficha Obstétrica Completa</h3>
+        <p>O pré-natal mais completo do mercado: dados da gestação, USG com gráficos de crescimento fetal, consultas pré-natais, vitalidade, plano de parto e berçário.</p>
+        <ul class="tab-features">
+          <li>DPP calculada automaticamente pela DUM e 1º USG</li>
+          <li>Tabela de USG com biometria fetal e percentis</li>
+          <li>Gráfico de Peso Fetal (Hadlock), IMC Gestacional (Atalah) e Altura Uterina (Martinelli)</li>
+          <li>Vitalidade Fetal: CTR, ILA, PBF, STV, IP Umbilical, IP ACM</li>
+          <li>Consultas pré-natais com PA, AU, BCF, edema e BCF</li>
+          <li>Vacinas/EGB, Plano de Parto, dados do Berçário</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Ficha Obstétrica — FERNANDA TUNES RODRIGUES</span>
+        </div>
+        <div class="screen-body">
+          <div class="obs-header">
+            <div class="obs-title">Ficha Obstétrica</div>
+            <div class="obs-ig">IG hoje: 38s 5d • Carolina</div>
+          </div>
+          <div class="obs-tabs">
+            <div class="obs-tab">GESTAÇÃO</div>
+            <div class="obs-tab active">USG</div>
+            <div class="obs-tab">CONSULTAS</div>
+            <div class="obs-tab">VITALIDADE</div>
+            <div class="obs-tab">MED/DIAG</div>
+            <div class="obs-tab">PARTO</div>
+            <div class="obs-tab">BERÇÁRIO</div>
+          </div>
+          <table class="usg-table">
+            <thead><tr><th>Data</th><th>IG</th><th>DBP</th><th>CA</th><th>F</th><th>Peso Est.</th></tr></thead>
+            <tbody>
+              <tr><td>26/02/2026</td><td class="ig-badge">34s 2d</td><td>8.76 P36</td><td>29.04 P29</td><td>6.79</td><td>2324g</td></tr>
+              <tr><td>19/03/2026</td><td class="ig-badge">37s 2d</td><td>8.97 P21</td><td>32.19 P39</td><td>7.19</td><td>2924g P38</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINANCEIRO -->
+    <div class="tab-content" id="tab-financeiro">
+      <div class="tab-info reveal-left">
+        <h3>Financeiro & Faturamento</h3>
+        <p>Controle completo das receitas da clínica: faturamento por convênio, emissão de recibos e notas fiscais, e relatório mensal de atendimentos.</p>
+        <ul class="tab-features">
+          <li>Resumo mensal de consultas, retornos e procedimentos</li>
+          <li>Faturamento separado por convênio (Bradesco, SulAmérica, Particular...)</li>
+          <li>Emissão de Recibos e Notas Fiscais com CPF da paciente</li>
+          <li>Controle por período: mês, semana ou intervalo personalizado</li>
+          <li>Lançamento retroativo de atendimentos</li>
+          <li>Tipos de pagamento: débito, crédito, PIX, dinheiro</li>
+        </ul>
+      </div>
+      <div class="tab-screen reveal-right">
+        <div class="screen-bar">
+          <div class="screen-dot r"></div><div class="screen-dot y"></div><div class="screen-dot g"></div>
+          <span class="screen-title">Faturamento — 03/2026</span>
+        </div>
+        <div class="screen-body">
+          <div class="fin-summary">
+            <div class="fin-card"><div class="fin-card-lbl">Consultas</div><div class="fin-card-val">68</div></div>
+            <div class="fin-card"><div class="fin-card-lbl">Retornos</div><div class="fin-card-val">10</div></div>
+            <div class="fin-card green"><div class="fin-card-lbl">Total</div><div class="fin-card-val">R$ 11.032</div></div>
+          </div>
+          <div class="fin-row" style="background:rgba(107,63,160,0.08); font-weight:700; font-size:.65rem; color:var(--violet);">
+            <div>Data</div><div>Paciente</div><div>Tipo</div><div>Valor</div>
+          </div>
+          <div class="fin-row">
+            <div class="fin-type">26/03</div>
+            <div class="fin-patient">MARIA CLEONISSA DA SILVA</div>
+            <div class="fin-type">Consulta · AMIL</div>
+            <div class="fin-val">R$ 110,00</div>
+          </div>
+          <div class="fin-row">
+            <div class="fin-type">23/03</div>
+            <div class="fin-patient">FERNANDA TUNES RODRIGUES</div>
+            <div class="fin-type">Consulta · SulAmérica</div>
+            <div class="fin-val">R$ 137,81</div>
+          </div>
+          <div class="fin-row">
+            <div class="fin-type">19/03</div>
+            <div class="fin-patient">MARIA RIBEIRO COELHO</div>
+            <div class="fin-type">Consulta · Particular</div>
+            <div class="fin-val">R$ 400,00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-NATAL DIGITAL -->
+<section class="prenatal" id="prenatal">
+  <div class="section-inner">
+    <div class="prenatal-grid">
+      <div class="reveal-left">
+        <span class="section-tag">Exclusivo SCWeb</span>
+        <h2 class="section-title">Cartão de Pré-Natal<br>Digital para a Paciente</h2>
+        <p class="section-desc" style="margin-bottom:2rem">A gestante acessa todas as informações do próprio pré-natal diretamente pelo celular, sem precisar baixar nenhum aplicativo.</p>
+        <div class="prenatal-features">
+          <div class="pn-feature">
+            <div class="pn-feature-icon">📊</div>
+            <div>
+              <h4>IG e DPP em Tempo Real</h4>
+              <p>A paciente vê quantas semanas e dias de gestação está hoje, e quantos dias faltam para o parto.</p>
+            </div>
+          </div>
+          <div class="pn-feature">
+            <div class="pn-feature-icon">📋</div>
+            <div>
+              <h4>Histórico Completo de Consultas</h4>
+              <p>Dados de todas as consultas pré-natais, exames e resultados acessíveis a qualquer momento.</p>
+            </div>
+          </div>
+          <div class="pn-feature">
+            <div class="pn-feature-icon">🌱</div>
+            <div>
+              <h4>Conteúdo Educativo Semanal</h4>
+              <p>A cada semana, a gestante recebe informações sobre o desenvolvimento do bebê — de forma visual e encantadora.</p>
+            </div>
+          </div>
+          <div class="pn-feature">
+            <div class="pn-feature-icon">🔗</div>
+            <div>
+              <h4>Link Simples de Compartilhar</h4>
+              <p>O médico gera um link único e envia para a paciente — sem cadastro, sem app, funciona no navegador.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prenatal-visual reveal-right">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="cartao-pn">
+              <div class="cartao-header">
+                <div style="font-size:.7rem; color:rgba(255,255,255,.6); margin-bottom:4px;">Dr(a). Silvio Martinelli</div>
+                <div class="cartao-greeting">Olá, FERNANDA! 👋 🍼 Carolina</div>
+                <div class="cartao-ig">⏳ Você está com 38 semanas e 5 dias</div>
+                <div class="cartao-progress"><div class="cartao-progress-bar"></div></div>
+                <div class="cartao-dpp">📅 DPP: 07/04/2026 | Faltam 9 dias! 🎉</div>
+              </div>
+              <div class="cartao-semana">
+                <div class="cartao-semana-icon">🍎</div>
+                <div>
+                  <div class="cartao-semana-title">Semana 38 — alho-poró</div>
+                  <div class="cartao-semana-desc">Cérebro Crescendo 🧠<br>Formando conexões neurais importantes!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="metrics">
+  <div class="metrics-inner">
+    <h2 class="metrics-title reveal">Números que mostram a confiança das clínicas</h2>
+    <div class="metrics-grid">
+      <div class="reveal" style="transition-delay:.1s">
+        <span class="metric-num">28.000+</span>
+        <div class="metric-lbl">Pacientes ativas no sistema</div>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <span class="metric-num">18+</span>
+        <div class="metric-lbl">Módulos especializados</div>
+      </div>
+      <div class="reveal" style="transition-delay:.3s">
+        <span class="metric-num">100%</span>
+        <div class="metric-lbl">Web, sem instalação</div>
+      </div>
+      <div class="reveal" style="transition-delay:.4s">
+        <span class="metric-num">GO</span>
+        <div class="metric-lbl">Criado por ginecologista</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="reveal-left">
+        <div class="about-quote">
+          <p class="about-quote-text">Criamos o SCWeb porque sentimos falta de um sistema que realmente entendesse a rotina de uma clínica de ginecologia. Cada tela, cada campo, cada atalho foi pensado por quem atende pacientes todos os dias.</p>
+          <div class="about-quote-author">— <strong>Dr. Silvio Martinelli</strong>, Ginecologista e Obstetra · Criador do SCWeb</div>
+        </div>
+      </div>
+      <div class="about-points reveal-right">
+        <span class="section-tag">Nosso Diferencial</span>
+        <h2 class="section-title">Um sistema que fala a língua do ginecologista</h2>
+        <div class="about-point">
+          <div class="about-point-icon">🎯</div>
+          <div>
+            <h4>Especialidade, não generalidade</h4>
+            <p>O SCWeb não é um sistema genérico adaptado. Ele foi construído do zero para a realidade da Ginecologia e Obstetrícia.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">⚡</div>
+          <div>
+            <h4>Rápido e intuitivo no consultório</h4>
+            <p>Atalhos de exames, campos que se completam, cálculos automáticos — tudo para que o médico passe menos tempo digitando e mais tempo com a paciente.</p>
+          </div>
+        </div>
+        <div class="about-point">
+          <div class="about-point-icon">🔄</div>
+          <div>
+            <h4>Em constante evolução</h4>
+            <p>O sistema cresce com base no feedback de quem usa. Novas funcionalidades são adicionadas regularmente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="planos">
+  <div class="section-inner">
+    <div class="centered reveal">
+      <span class="section-tag">Planos</span>
+      <h2 class="section-title">Simples, transparente e justo</h2>
+      <p class="section-desc">Assinatura mensal sem fidelidade. Comece agora e cancele quando quiser.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan reveal" style="transition-delay:.1s">
+        <div class="plan-name">Essencial</div>
+        <div class="plan-price">
+          <span class="plan-price-val">Sob consulta</span>
+        </div>
+        <p class="plan-desc">Para consultórios individuais que buscam organização e eficiência.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Até 1 médico</li>
+          <li>Dashboard e Sala de Espera</li>
+          <li>Cadastro de Pacientes</li>
+          <li>Agenda com Google Calendar</li>
+          <li>Prontuário Ginecológico</li>
+          <li>Exames e Receituários</li>
+          <li>Atestados e Recibos</li>
+        </ul>
+        <a href="#contato" class="plan-cta outline">Solicitar Proposta</a>
+      </div>
+      <div class="plan featured reveal" style="transition-delay:.2s">
+        <div class="plan-badge">Mais Completo</div>
+        <div class="plan-name">Completo</div>
+        <div class="plan-price">
+          <span class="plan-price-val">Sob consulta</span>
+        </div>
+        <p class="plan-desc">Tudo que sua clínica de GO precisa, sem nenhuma limitação.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Tudo do Essencial</li>
+          <li>Ficha Obstétrica Completa</li>
+          <li>Cartão de Pré-Natal Digital</li>
+          <li>Laudos de USG (todos os tipos)</li>
+          <li>Painel de Gestantes com IG automática</li>
+          <li>Mastologia e Bioimpedância</li>
+          <li>Internação e Faturamento</li>
+          <li>Relatórios e Documentos Clínicos</li>
+          <li>Teleconsulta integrada</li>
+        </ul>
+        <a href="#contato" class="plan-cta solid">Solicitar Proposta</a>
+      </div>
+      <div class="plan reveal" style="transition-delay:.3s">
+        <div class="plan-name">Clínica</div>
+        <div class="plan-price">
+          <span class="plan-price-val">Sob consulta</span>
+        </div>
+        <p class="plan-desc">Para clínicas com múltiplos médicos e equipe de secretaria.</p>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Tudo do Completo</li>
+          <li>Múltiplos médicos</li>
+          <li>Perfis de acesso diferenciados</li>
+          <li>Agenda multi-médico</li>
+          <li>Faturamento consolidado</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <a href="#contato" class="plan-cta outline">Solicitar Proposta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contato">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <span class="section-tag">Fale com a gente</span>
+        <h2 class="section-title">Solicite uma demonstração gratuita</h2>
+        <p>Preencha o formulário e entraremos em contato para apresentar o SCWeb ao vivo, tirar todas as suas dúvidas e mostrar como o sistema pode transformar a gestão da sua clínica.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌐</div>
+          <div class="contact-detail-text">scweb.com.br</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">Brasil — Sistema 100% Web</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">👨‍⚕️</div>
+          <div class="contact-detail-text">Suporte direto com os desenvolvedores</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="contact-form">
+          <div class="form-title">Solicitar Demonstração</div>
+          <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nome completo *</label>
+                <input type="text" class="form-input" placeholder="Dr(a). Seu Nome" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Especialidade *</label>
+                <select class="form-select" required>
+                  <option value="">Selecione...</option>
+                  <option>Ginecologia e Obstetrícia</option>
+                  <option>Ginecologia</option>
+                  <option>Obstetrícia</option>
+                  <option>Mastologia</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nome da clínica *</label>
+              <input type="text" class="form-input" placeholder="Clínica / Consultório" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">E-mail *</label>
+                <input type="email" class="form-input" placeholder="seu@email.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp *</label>
+                <input type="tel" class="form-input" placeholder="(11) 99999-9999" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Quantos médicos na clínica?</label>
+              <select class="form-select">
+                <option>Apenas eu</option>
+                <option>2 a 3 médicos</option>
+                <option>4 a 10 médicos</option>
+                <option>Mais de 10</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mensagem (opcional)</label>
+              <textarea class="form-textarea" placeholder="Conte-nos sobre sua clínica ou dúvidas sobre o sistema..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Solicitar Demonstração Gratuita →</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div style="font-size:2rem;margin-bottom:10px;">🎉</div>
+            <h3>Solicitação enviada!</h3>
+            <p>Em breve entraremos em contato para agendar sua demonstração gratuita do SCWeb.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#" style="margin-bottom:16px; display:inline-flex;">
+        <div class="nav-logo-mark">S</div>
+        <span class="nav-logo-text" style="color:white;">SCWeb</span>
+      </a>
+      <p>Sistema de gestão clínica especializado em Ginecologia e Obstetrícia. Desenvolvido por médicos para médicos.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Módulos</h4>
+      <ul>
+        <li><a href="#modulos">Agenda</a></li>
+        <li><a href="#modulos">Prontuário Ginecológico</a></li>
+        <li><a href="#modulos">Exames & Laudos USG</a></li>
+        <li><a href="#prenatal">Pré-Natal Digital</a></li>
+        <li><a href="#modulos">Gestantes</a></li>
+        <li><a href="#modulos">Financeiro</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#sobre">Sobre o SCWeb</a></li>
+        <li><a href="#planos">Planos e Preços</a></li>
+        <li><a href="#contato">Solicitar Demo</a></li>
+        <li><a href="https://www.scweb.com.br" target="_blank">Acessar o Sistema</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SCWeb · Todos os direitos reservados · <a href="#">Política de Privacidade</a></p>
+    <div class="footer-badge">♀ Especializado em GO</div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// Tabs
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  // Re-trigger reveal
+  document.querySelectorAll('#tab-' + id + ' .reveal-left, #tab-' + id + ' .reveal-right').forEach(el => {
+    el.classList.remove('visible');
+    setTimeout(() => el.classList.add('visible'), 50);
+  });
+}
+
+// Form submit
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+// Mobile menu toggle (simplified)
+function toggleMobileMenu() {
+  alert('Para uma demonstração, entre em contato pelo formulário abaixo!');
+}
+
+// Animate on load
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight) el.classList.add('visible');
+});
+</script>
+</body>
+</html>
