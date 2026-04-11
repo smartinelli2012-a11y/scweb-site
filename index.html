@@ -5,274 +5,251 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SCWeb — Plataforma para Ginecologia & Obstetrícia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1a1a2e; background: #fff; overflow-x: hidden; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; color: inherit; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#111;background:#fff;overflow-x:hidden;line-height:1.6;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 7vw;
-  background: rgba(255,255,255,.96);
-  border-bottom: 1px solid #eee;
-  transition: box-shadow .3s;
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;height:68px;
+  background:#fff;border-bottom:1px solid #f0f0f0;
 }
-nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.08); }
-.nav-logo img { height: 34px; }
-.nav-links { list-style: none; display: flex; gap: 2.5rem; }
-.nav-links a { font-size: .875rem; font-weight: 500; color: #555; transition: color .2s; }
-.nav-links a:hover { color: #6b21a8; }
-.nav-cta {
-  background: #6b21a8; color: white;
-  padding: 10px 22px; border-radius: 8px;
-  font-size: .875rem; font-weight: 600;
-  transition: background .2s;
+.nav-logo img{height:36px;}
+.nav-links{list-style:none;display:flex;gap:2.5rem;}
+.nav-links a{font-size:.9rem;font-weight:500;color:#555;transition:color .2s;}
+.nav-links a:hover{color:#6b21a8;}
+.nav-cta{
+  background:#6b21a8;color:#fff;
+  padding:10px 22px;border-radius:8px;
+  font-size:.875rem;font-weight:700;
+  transition:background .2s;
 }
-.nav-cta:hover { background: #581c87; }
+.nav-cta:hover{background:#581c87;}
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  padding: 140px 7vw 100px;
-  background: linear-gradient(135deg, #f5f0ff 0%, #fce7f3 100%);
-  display: flex; align-items: center;
+/* HERO */
+.hero{
+  padding:120px 6vw 80px;
+  background:#fff;
 }
-.hero-grid {
-  max-width: 1280px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 5rem; align-items: center;
+.hero-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:center;
 }
-.hero-label {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(107,33,168,.1); color: #6b21a8;
-  border: 1px solid rgba(107,33,168,.2);
-  padding: 6px 16px; border-radius: 100px;
-  font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-  margin-bottom: 1.5rem;
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#f3e8ff;color:#6b21a8;
+  border-radius:100px;padding:6px 14px;
+  font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  margin-bottom:1.5rem;
 }
-.hero-label::before { content: ''; width: 6px; height: 6px; background: #a855f7; border-radius: 50%; }
-.hero h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2rem, 3vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.15; color: #0f0a1e;
-  margin-bottom: 1.4rem;
-  letter-spacing: -.02em;
+.hero h1{
+  font-size:clamp(2.2rem,3.5vw,3.4rem);
+  font-weight:800;line-height:1.15;
+  color:#111;letter-spacing:-.025em;
+  margin-bottom:1.25rem;
 }
-.hero h1 em { font-style: italic; color: #6b21a8; font-weight: 800; }
-.hero-desc {
-  font-size: 1rem; color: #555; line-height: 1.85;
-  margin-bottom: 2.5rem; max-width: 480px;
+.hero h1 span{color:#6b21a8;}
+.hero-desc{
+  font-size:1.05rem;color:#555;line-height:1.8;
+  margin-bottom:2rem;max-width:460px;
 }
-.hero-desc strong { color: #0f0a1e; }
-.hero-btns { display: flex; gap: 1rem; margin-bottom: 3rem; }
-.btn-fill {
-  background: #6b21a8; color: white;
-  padding: 13px 26px; border-radius: 8px;
-  font-size: .95rem; font-weight: 600;
-  box-shadow: 0 4px 16px rgba(107,33,168,.3);
-  transition: all .2s;
+.hero-checks{display:flex;flex-direction:column;gap:10px;margin-bottom:2.5rem;}
+.hero-check{display:flex;align-items:center;gap:10px;font-size:.95rem;color:#333;font-weight:500;}
+.hero-check::before{content:'✓';width:22px;height:22px;background:#6b21a8;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;}
+.hero-btns{display:flex;gap:1rem;margin-bottom:3rem;}
+.btn-primary{
+  background:#6b21a8;color:#fff;
+  padding:13px 26px;border-radius:8px;
+  font-size:.95rem;font-weight:700;
+  transition:all .2s;
 }
-.btn-fill:hover { background: #581c87; transform: translateY(-1px); }
-.btn-line {
-  border: 1.5px solid #ccc; color: #333;
-  padding: 13px 26px; border-radius: 8px;
-  font-size: .95rem; font-weight: 600;
-  transition: all .2s;
+.btn-primary:hover{background:#581c87;transform:translateY(-1px);}
+.btn-ghost{
+  border:1.5px solid #ddd;color:#333;
+  padding:13px 26px;border-radius:8px;
+  font-size:.95rem;font-weight:600;
+  transition:all .2s;
 }
-.btn-line:hover { border-color: #6b21a8; color: #6b21a8; }
-.hero-nums { display: flex; gap: 3rem; }
-.hero-num { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2rem; color: #0f0a1e; display: block; letter-spacing: -.02em; }
-.hero-num-label { font-size: .75rem; color: #888; margin-top: 3px; }
+.btn-ghost:hover{border-color:#6b21a8;color:#6b21a8;}
+.hero-stats{
+  display:flex;gap:3rem;
+  padding-top:2rem;border-top:1px solid #f0f0f0;
+}
+.stat-num{font-size:1.9rem;font-weight:800;color:#111;display:block;letter-spacing:-.02em;}
+.stat-lbl{font-size:.78rem;color:#888;margin-top:2px;font-weight:500;}
 
-/* Hero visual */
-.hero-visual { position: relative; }
-.hero-img {
-  border-radius: 16px; overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.12);
-  border: 1px solid rgba(0,0,0,.06);
+/* Hero image */
+.hero-img{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.1);
+  border:1px solid #f0f0f0;
 }
-.hero-img img { width: 100%; }
-.hero-card {
-  position: absolute; background: white;
-  border-radius: 12px; padding: 14px 18px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.1);
-  border: 1px solid #f0f0f0;
-  animation: float 4s ease-in-out infinite;
-}
-.hero-card.c1 { bottom: -16px; left: -20px; }
-.hero-card.c2 { top: 20px; right: -16px; animation-delay: -2s; }
-.hero-card strong { display: block; font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #6b21a8; margin-bottom: 4px; }
-.hero-card span { font-size: .85rem; font-weight: 600; color: #0f0a1e; }
-@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+.hero-img img{width:100%;}
 
-/* ── GALLERY ── */
-.gallery { background: #0f0a1e; padding: 96px 7vw; }
-.gallery-top { max-width: 1280px; margin: 0 auto 3rem; }
-.section-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #a855f7; display: block; margin-bottom: 12px; }
-.section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: clamp(1.8rem, 2.8vw, 2.6rem); line-height: 1.15; letter-spacing: -.02em; }
-.section-title em { font-style: italic; color: #a855f7; }
-.section-desc { color: rgba(255,255,255,.55); font-size: .97rem; line-height: 1.8; margin-top: 12px; max-width: 540px; }
-.gallery .section-title { color: white; }
-.gallery-grid {
-  max-width: 1280px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-}
-.screen-card {
-  border-radius: 12px; overflow: hidden;
-  background: #1a1033;
-  box-shadow: 0 8px 32px rgba(0,0,0,.3);
-  border: 1px solid rgba(255,255,255,.06);
-  cursor: zoom-in;
-  transition: transform .25s, box-shadow .25s;
-}
-.screen-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,.4); }
-.screen-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; pointer-events: none; }
-.screen-label { padding: 14px 16px; }
-.screen-label strong { display: block; font-size: .82rem; font-weight: 600; color: white; }
-.screen-label span { display: block; font-size: .72rem; color: rgba(255,255,255,.4); margin-top: 3px; }
+/* STATS BAR */
+.stats-bar{background:#f9f5ff;padding:40px 6vw;border-top:1px solid #ede9fe;border-bottom:1px solid #ede9fe;}
+.stats-bar-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.bar-num{font-size:2.2rem;font-weight:800;color:#6b21a8;display:block;letter-spacing:-.02em;}
+.bar-lbl{font-size:.82rem;color:#666;margin-top:4px;font-weight:500;}
 
-/* ── FEATURES ── */
-.features { background: #f9f5ff; padding: 96px 7vw; }
-.features-top { max-width: 1280px; margin: 0 auto 3rem; }
-.features-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.feat {
-  background: white; border-radius: 16px; padding: 36px 28px;
-  box-shadow: 0 2px 16px rgba(107,33,168,.07);
-  transition: transform .25s, box-shadow .25s;
+/* GALLERY */
+.gallery{background:#111;padding:96px 6vw;}
+.gallery-inner{max-width:1200px;margin:0 auto;}
+.gallery-head{margin-bottom:3rem;}
+.gallery-head .label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#a855f7;display:block;margin-bottom:10px;}
+.gallery-head h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.15;}
+.gallery-head p{color:rgba(255,255,255,.5);font-size:.97rem;margin-top:10px;max-width:500px;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.g-card{
+  border-radius:12px;overflow:hidden;
+  background:#1a1a1a;border:1px solid rgba(255,255,255,.07);
+  cursor:zoom-in;transition:transform .25s,box-shadow .25s;
 }
-.feat:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(107,33,168,.12); }
-.feat-icon { font-size: 2rem; margin-bottom: 18px; }
-.feat h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
-.feat p { font-size: .88rem; color: #666; line-height: 1.75; }
+.g-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.g-card img{width:100%;aspect-ratio:16/10;object-fit:cover;pointer-events:none;}
+.g-label{padding:12px 14px;}
+.g-label strong{display:block;font-size:.82rem;font-weight:600;color:#fff;}
+.g-label span{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:2px;display:block;}
 
-/* ── PRENATAL ── */
-.prenatal { background: #0f0a1e; padding: 96px 7vw; }
-.prenatal-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-.prenatal .section-label { color: #a855f7; }
-.prenatal .section-title { color: white; max-width: none; }
-.prenatal .section-desc { color: rgba(255,255,255,.6); }
-.pn-items { display: flex; flex-direction: column; gap: 14px; margin-top: 2rem; }
-.pn-item {
-  display: flex; gap: 16px; align-items: flex-start;
-  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px; padding: 18px 20px;
+/* FEATURES */
+.features{background:#fff;padding:96px 6vw;}
+.features-inner{max-width:1200px;margin:0 auto;}
+.section-head{margin-bottom:3rem;}
+.section-head .label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;display:block;margin-bottom:10px;}
+.section-head h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:#111;letter-spacing:-.025em;line-height:1.15;}
+.section-head p{color:#666;font-size:.97rem;margin-top:10px;max-width:500px;line-height:1.75;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.f-card{
+  padding:32px 26px;border-radius:16px;
+  background:#fafafa;border:1px solid #f0f0f0;
+  transition:all .25s;
 }
-.pn-item-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-.pn-item h4 { font-size: .92rem; font-weight: 600; color: white; margin-bottom: 4px; }
-.pn-item p { font-size: .84rem; color: rgba(255,255,255,.5); line-height: 1.6; }
-.phone-wrap { display: flex; justify-content: center; }
-.phone { width: 270px; padding: 10px; border-radius: 40px; background: #1a1033; box-shadow: 0 28px 70px rgba(0,0,0,.5); border: 2px solid rgba(255,255,255,.1); }
-.phone-screen { border-radius: 30px; overflow: hidden; background: linear-gradient(160deg, #6d28d9, #9d174d); padding: 22px 18px; color: white; }
-.phone-sm { font-size: .63rem; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
-.phone-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 1.4rem; margin: 8px 0 6px; }
-.phone-ig { font-size: .8rem; color: rgba(255,255,255,.75); margin-bottom: 12px; }
-.phone-bar { height: 6px; background: rgba(255,255,255,.2); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
-.phone-bar-fill { display: block; height: 100%; width: 92%; background: white; border-radius: 10px; }
-.phone-dpp { font-size: .75rem; color: rgba(255,255,255,.65); margin-bottom: 14px; }
-.phone-week { background: rgba(255,255,255,.13); border-radius: 12px; padding: 13px; }
-.phone-week strong { display: block; font-size: .82rem; margin-bottom: 4px; }
-.phone-week span { font-size: .7rem; color: rgba(255,255,255,.65); line-height: 1.5; }
+.f-card:hover{background:#6b21a8;border-color:#6b21a8;transform:translateY(-4px);}
+.f-card:hover h3,.f-card:hover p{color:#fff;}
+.f-icon{font-size:1.8rem;margin-bottom:16px;}
+.f-card h3{font-size:1rem;font-weight:700;color:#111;margin-bottom:8px;transition:color .25s;}
+.f-card p{font-size:.88rem;color:#666;line-height:1.7;transition:color .25s;}
 
-/* ── MODULES ── */
-.modules { background: white; padding: 96px 7vw; }
-.modules-top { max-width: 1280px; margin: 0 auto 3rem; }
-.modules-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.mod {
-  background: #f5f0ff; border-radius: 16px; padding: 26px 20px;
-  transition: all .25s;
+/* PRENATAL */
+.prenatal{background:#f9f5ff;padding:96px 6vw;}
+.prenatal-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.pn-points{display:flex;flex-direction:column;gap:20px;margin-top:2rem;}
+.pn-pt{display:flex;gap:14px;align-items:flex-start;}
+.pn-icon{width:42px;height:42px;border-radius:10px;background:#6b21a8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.pn-pt h4{font-size:.95rem;font-weight:700;color:#111;margin-bottom:3px;}
+.pn-pt p{font-size:.86rem;color:#666;line-height:1.65;}
+.phone-wrap{display:flex;justify-content:center;}
+.phone{width:270px;padding:10px;border-radius:40px;background:#1a1033;box-shadow:0 24px 64px rgba(107,33,168,.25);border:2px solid rgba(107,33,168,.2);}
+.phone-screen{border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#6d28d9,#9d174d);padding:22px 18px;color:#fff;}
+.p-sm{font-size:.62rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
+.p-name{font-size:1.5rem;font-weight:700;margin:8px 0 6px;letter-spacing:-.02em;}
+.p-ig{font-size:.8rem;color:rgba(255,255,255,.75);margin-bottom:12px;}
+.p-bar{height:6px;background:rgba(255,255,255,.2);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.p-bar span{display:block;height:100%;width:92%;background:#fff;border-radius:10px;}
+.p-dpp{font-size:.75rem;color:rgba(255,255,255,.65);margin-bottom:14px;}
+.p-week{background:rgba(255,255,255,.13);border-radius:12px;padding:13px;}
+.p-week strong{display:block;font-size:.82rem;margin-bottom:4px;}
+.p-week span{font-size:.7rem;color:rgba(255,255,255,.65);line-height:1.5;}
+
+/* MODULES */
+.modules{background:#fff;padding:96px 6vw;}
+.modules-inner{max-width:1200px;margin:0 auto;}
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:3rem;}
+.m-card{
+  padding:24px 18px;border-radius:14px;
+  background:#fafafa;border:1px solid #f0f0f0;
+  transition:all .25s;
 }
-.mod:hover { background: #6b21a8; transform: translateY(-4px); box-shadow: 0 12px 32px rgba(107,33,168,.22); }
-.mod:hover h3, .mod:hover p { color: white; }
-.mod-icon { font-size: 1.5rem; margin-bottom: 14px; }
-.mod h3 { font-size: .92rem; font-weight: 600; margin-bottom: 6px; transition: color .25s; }
-.mod p { font-size: .82rem; color: #777; line-height: 1.6; transition: color .25s; }
+.m-card:hover{background:#6b21a8;border-color:#6b21a8;transform:translateY(-3px);}
+.m-card:hover h3,.m-card:hover p{color:#fff;}
+.m-icon{font-size:1.4rem;margin-bottom:12px;}
+.m-card h3{font-size:.92rem;font-weight:700;color:#111;margin-bottom:5px;transition:color .25s;}
+.m-card p{font-size:.82rem;color:#777;line-height:1.6;transition:color .25s;}
 
-/* ── QUOTE ── */
-.quote-section { background: #f5f0ff; padding: 96px 7vw; }
-.quote-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.quote-box { background: #0f0a1e; border-radius: 24px; padding: 48px; position: relative; overflow: hidden; }
-.quote-box::before { content: '"'; position: absolute; top: -20px; left: 20px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 9rem; color: rgba(168,85,247,.15); line-height: 1; }
-.quote-text { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; font-size: 1.15rem; font-style: italic; color: white; line-height: 1.75; position: relative; z-index: 1; margin-bottom: 22px; }
-.quote-author { font-size: .84rem; color: rgba(255,255,255,.45); }
-.quote-author strong { color: #c084fc; }
-.quote-copy .section-label { color: #6b21a8; }
-.quote-points { display: flex; flex-direction: column; gap: 20px; margin-top: 1.5rem; }
-.quote-point { display: flex; gap: 14px; }
-.quote-point-icon { width: 44px; height: 44px; border-radius: 12px; background: #ede9fe; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-.quote-point h4 { font-size: .95rem; font-weight: 600; margin-bottom: 4px; }
-.quote-point p { font-size: .85rem; color: #666; line-height: 1.7; }
+/* QUOTE */
+.quote-sec{background:#f9f5ff;padding:96px 6vw;}
+.quote-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.q-box{background:#111;border-radius:20px;padding:44px;position:relative;overflow:hidden;}
+.q-box::before{content:'"';position:absolute;top:-10px;left:16px;font-size:8rem;color:rgba(168,85,247,.15);line-height:1;}
+.q-text{font-size:1.1rem;font-weight:500;color:#fff;line-height:1.8;position:relative;z-index:1;margin-bottom:20px;}
+.q-author{font-size:.84rem;color:rgba(255,255,255,.45);}
+.q-author strong{color:#c084fc;}
+.q-points{display:flex;flex-direction:column;gap:18px;margin-top:2rem;}
+.q-pt{display:flex;gap:12px;}
+.q-pt-icon{width:40px;height:40px;border-radius:10px;background:#ede9fe;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.q-pt h4{font-size:.93rem;font-weight:700;color:#111;margin-bottom:3px;}
+.q-pt p{font-size:.85rem;color:#666;line-height:1.65;}
 
-/* ── CONTACT ── */
-.contact { background: white; padding: 96px 7vw; }
-.contact-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.contact-copy h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 2rem; line-height: 1.15; margin-bottom: 1rem; letter-spacing: -.02em; }
-.contact-copy p { color: #555; font-size: .97rem; line-height: 1.8; margin-bottom: 1.5rem; }
-.contact-detail { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: .9rem; font-weight: 500; }
-.contact-detail span { font-size: 1rem; }
-.contact-form { background: #f9f5ff; border-radius: 20px; padding: 36px; }
-.form-group { margin-bottom: 14px; }
-.form-group label { display: block; font-size: .8rem; font-weight: 600; margin-bottom: 5px; color: #333; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%; padding: 11px 14px;
-  border: 1.5px solid #e4d9f7; border-radius: 10px;
-  background: white; font: inherit; color: #1a1a2e; outline: none;
-  font-size: .9rem; transition: border-color .2s;
+/* CONTACT */
+.contact{background:#fff;padding:96px 6vw;}
+.contact-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-copy h2{font-size:2rem;font-weight:800;color:#111;letter-spacing:-.025em;line-height:1.2;margin-bottom:1rem;}
+.contact-copy p{color:#555;font-size:.97rem;line-height:1.8;margin-bottom:1.5rem;}
+.c-detail{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:.9rem;font-weight:500;color:#333;}
+.contact-form{background:#f9f5ff;border-radius:16px;padding:32px;}
+.fg{margin-bottom:13px;}
+.fg label{display:block;font-size:.8rem;font-weight:600;color:#333;margin-bottom:5px;}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:11px 14px;
+  border:1.5px solid #e4d9f7;border-radius:10px;
+  background:#fff;font:inherit;color:#111;outline:none;
+  font-size:.9rem;transition:border-color .2s;
 }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #6b21a8; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-submit {
-  width: 100%; padding: 13px; border: none; border-radius: 10px;
-  background: #6b21a8; color: white; font-size: .97rem; font-weight: 700;
-  cursor: pointer; font-family: inherit; margin-top: 6px;
-  transition: background .2s;
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#6b21a8;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.f-submit{
+  width:100%;padding:13px;border:none;border-radius:10px;
+  background:#6b21a8;color:#fff;font-size:.97rem;font-weight:700;
+  cursor:pointer;font-family:inherit;margin-top:6px;
+  transition:background .2s;
 }
-.form-submit:hover { background: #581c87; }
-.form-ok { display: none; margin-top: 14px; padding: 14px; border-radius: 10px; background: #f0fdf4; color: #166534; font-size: .9rem; font-weight: 600; text-align: center; }
+.f-submit:hover{background:#581c87;}
+.f-ok{display:none;margin-top:12px;padding:12px;border-radius:10px;background:#f0fdf4;color:#166534;font-size:.9rem;font-weight:600;text-align:center;}
 
-/* ── FOOTER ── */
-footer { background: #0f0a1e; padding: 44px 7vw 28px; }
-.footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-.footer-logo img { height: 28px; opacity: .7; }
-.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a { font-size: .82rem; color: rgba(255,255,255,.4); transition: color .2s; }
-.footer-links a:hover { color: #c084fc; }
-.footer-copy { font-size: .78rem; color: rgba(255,255,255,.25); }
+/* FOOTER */
+footer{background:#111;padding:44px 6vw 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo img{height:28px;filter:brightness(0) invert(.7);}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s;}
+.footer-links a:hover{color:#c084fc;}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.25);}
 
-/* ── LIGHTBOX ── */
-#lb { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,.93); align-items: center; justify-content: center; }
-#lb.on { display: flex; }
-#lb img { max-width: 90vw; max-height: 86vh; object-fit: contain; border-radius: 10px; transition: opacity .15s; }
-#lb-close { position: fixed; top: 20px; right: 24px; color: white; font-size: 1.4rem; cursor: pointer; background: rgba(255,255,255,.12); border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background .2s; }
-#lb-close:hover { background: rgba(255,255,255,.25); }
-#lb-prev, #lb-next { position: fixed; top: 50%; transform: translateY(-50%); color: white; font-size: 2rem; cursor: pointer; background: rgba(255,255,255,.1); border-radius: 50%; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background .2s; user-select: none; }
-#lb-prev { left: 16px; } #lb-next { right: 16px; }
-#lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,.22); }
-#lb-cap { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.1); backdrop-filter: blur(10px); color: white; padding: 10px 22px; border-radius: 100px; font-size: .84rem; font-weight: 500; pointer-events: none; white-space: nowrap; }
+/* LIGHTBOX */
+#lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center;}
+#lb.on{display:flex;}
+#lb img{max-width:90vw;max-height:86vh;object-fit:contain;border-radius:10px;transition:opacity .15s;}
+#lb-x{position:fixed;top:20px;right:24px;color:#fff;font-size:1.3rem;cursor:pointer;background:rgba(255,255,255,.12);border-radius:50%;width:42px;height:42px;display:flex;align-items:center;justify-content:center;z-index:10001;}
+#lb-x:hover{background:rgba(255,255,255,.22);}
+#lb-p,#lb-n{position:fixed;top:50%;transform:translateY(-50%);color:#fff;font-size:2rem;cursor:pointer;background:rgba(255,255,255,.1);border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;z-index:10001;user-select:none;}
+#lb-p{left:16px;}#lb-n{right:16px;}
+#lb-p:hover,#lb-n:hover{background:rgba(255,255,255,.2);}
+#lb-c{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.1);color:#fff;padding:9px 20px;border-radius:100px;font-size:.83rem;pointer-events:none;white-space:nowrap;}
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .hero-grid, .prenatal-grid, .quote-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .gallery-grid, .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .modules-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-card { display: none; }
+@media(max-width:1024px){
+  .hero-inner,.prenatal-inner,.quote-inner,.contact-inner{grid-template-columns:1fr;gap:3rem;}
+  .gallery-grid,.features-grid{grid-template-columns:repeat(2,1fr);}
+  .modules-grid{grid-template-columns:repeat(2,1fr);}
+  .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
 }
-@media (max-width: 640px) {
-  nav .nav-links, .nav-cta { display: none; }
-  .gallery-grid, .features-grid, .modules-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+@media(max-width:640px){
+  nav .nav-links,.nav-cta{display:none;}
+  .gallery-grid,.features-grid,.modules-grid{grid-template-columns:1fr;}
+  .fg-row{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <a href="#top" class="nav-logo"><img src="images/scweb-logo-tight-final.png" alt="SCWeb"></a>
+  <a href="#top"><img src="images/scweb-logo-tight-final.png" alt="SCWeb" style="height:36px;"></a>
   <ul class="nav-links">
     <li><a href="#sistema">Sistema</a></li>
     <li><a href="#prenatal">Pré-Natal Digital</a></li>
@@ -283,88 +260,102 @@ footer { background: #0f0a1e; padding: 44px 7vw 28px; }
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-grid">
+  <div class="hero-inner">
     <div>
-      <div class="hero-label">Especializado em Saúde da Mulher</div>
-      <h1>A plataforma <em>completa</em> para Ginecologia & Obstetrícia</h1>
-      <p class="hero-desc">Desenvolvida por um <strong>ginecologista e obstetra</strong>, o SCWeb integra agenda, prontuário especializado, pré-natal, laudos de USG e gestão em um único sistema.</p>
-      <div class="hero-btns">
-        <a href="#contato" class="btn-fill">Solicitar Demonstração</a>
-        <a href="#sistema" class="btn-line">Ver o Sistema</a>
+      <div class="hero-tag">Especializado em Saúde da Mulher</div>
+      <h1>A plataforma <span>completa</span> para Ginecologia & Obstetrícia</h1>
+      <p class="hero-desc">Desenvolvida por um ginecologista e obstetra, o SCWeb integra agenda, prontuário especializado, pré-natal, laudos de USG e gestão em um único sistema.</p>
+      <div class="hero-checks">
+        <div class="hero-check">Feito por quem vive a rotina do consultório</div>
+        <div class="hero-check">Agenda integrada com Google Calendar</div>
+        <div class="hero-check">Cartão de Pré-Natal Digital para a paciente</div>
       </div>
-      <div class="hero-nums">
-        <div><span class="hero-num">28.000+</span><div class="hero-num-label">Pacientes no sistema</div></div>
-        <div><span class="hero-num">18+</span><div class="hero-num-label">Módulos especializados</div></div>
-        <div><span class="hero-num">100%</span><div class="hero-num-label">Web, sem instalação</div></div>
+      <div class="hero-btns">
+        <a href="#contato" class="btn-primary">Solicitar Demonstração</a>
+        <a href="#sistema" class="btn-ghost">Ver o Sistema</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">28.000+</span><div class="stat-lbl">Pacientes no sistema</div></div>
+        <div><span class="stat-num">18+</span><div class="stat-lbl">Módulos especializados</div></div>
+        <div><span class="stat-num">100%</span><div class="stat-lbl">Web, sem instalação</div></div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img"><img src="images/screenshot-dashboard.png" alt="Dashboard SCWeb"></div>
-      <div class="hero-card c1"><strong>Pacientes ativas</strong><span>28.306 cadastradas</span></div>
-      <div class="hero-card c2"><strong>Gestante em acompanhamento</strong><span>38s 5d — DPP: 07/04</span></div>
+    <div class="hero-img">
+      <img src="images/screenshot-dashboard.png" alt="Dashboard SCWeb">
     </div>
   </div>
 </section>
 
-<section class="gallery" id="sistema">
-  <div class="gallery-top">
-    <span class="section-label">O Sistema em Ação</span>
-    <h2 class="section-title">Veja como o SCWeb funciona <em>na prática</em></h2>
-    <p class="section-desc">Cada tela pensada para a rotina real da clínica de Ginecologia e Obstetrícia.</p>
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div><span class="bar-num">28.000+</span><div class="bar-lbl">Pacientes cadastradas</div></div>
+    <div><span class="bar-num">18+</span><div class="bar-lbl">Módulos especializados</div></div>
+    <div><span class="bar-num">100%</span><div class="bar-lbl">Web, sem instalação</div></div>
+    <div><span class="bar-num">GO</span><div class="bar-lbl">Criado por ginecologista</div></div>
   </div>
-  <div class="gallery-grid">
-    <div class="screen-card"><img src="images/screenshot-dashboard.png" alt="Dashboard"><div class="screen-label"><strong>Dashboard</strong><span>Visão geral do dia em tempo real</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-agenda.png" alt="Agenda"><div class="screen-label"><strong>Agenda Integrada</strong><span>Grade com Google Calendar</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-pacientes.png" alt="Pacientes"><div class="screen-label"><strong>Gestão de Pacientes</strong><span>28.000+ pacientes cadastradas</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-exames.png" alt="Exames"><div class="screen-label"><strong>Solicitação de Exames</strong><span>Atalhos por perfil clínico</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-gestantes.png" alt="Gestantes"><div class="screen-label"><strong>Painel de Gestantes</strong><span>IG automática e código de cores</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-obstetrica.png" alt="Obstétrica"><div class="screen-label"><strong>Ficha Obstétrica</strong><span>USG, consultas, vitalidade e curvas</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-sala-espera.png" alt="Sala de Espera"><div class="screen-label"><strong>Sala de Espera</strong><span>Fluxo: Aguardando → Atendido</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-laudos.png" alt="Laudos"><div class="screen-label"><strong>Laudos de USG</strong><span>Estruturados com cálculo automático</span></div></div>
-    <div class="screen-card"><img src="images/screenshot-prenatal.png" alt="Pré-Natal"><div class="screen-label"><strong>Cartão Pré-Natal Digital</strong><span>Acompanhamento pelo celular</span></div></div>
+</div>
+
+<section class="gallery" id="sistema">
+  <div class="gallery-inner">
+    <div class="gallery-head">
+      <span class="label">O Sistema em Ação</span>
+      <h2>Veja como o SCWeb funciona na prática</h2>
+      <p>Cada tela pensada para a rotina real da clínica de Ginecologia e Obstetrícia.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-card"><img src="images/screenshot-dashboard.png" alt="Dashboard"><div class="g-label"><strong>Dashboard</strong><span>Visão geral do dia em tempo real</span></div></div>
+      <div class="g-card"><img src="images/screenshot-agenda.png" alt="Agenda"><div class="g-label"><strong>Agenda Integrada</strong><span>Grade com Google Calendar</span></div></div>
+      <div class="g-card"><img src="images/screenshot-pacientes.png" alt="Pacientes"><div class="g-label"><strong>Gestão de Pacientes</strong><span>28.000+ pacientes cadastradas</span></div></div>
+      <div class="g-card"><img src="images/screenshot-exames.png" alt="Exames"><div class="g-label"><strong>Solicitação de Exames</strong><span>Atalhos por perfil clínico</span></div></div>
+      <div class="g-card"><img src="images/screenshot-gestantes.png" alt="Gestantes"><div class="g-label"><strong>Painel de Gestantes</strong><span>IG automática e código de cores</span></div></div>
+      <div class="g-card"><img src="images/screenshot-obstetrica.png" alt="Obstétrica"><div class="g-label"><strong>Ficha Obstétrica</strong><span>USG, consultas, vitalidade e curvas</span></div></div>
+      <div class="g-card"><img src="images/screenshot-sala-espera.png" alt="Sala de Espera"><div class="g-label"><strong>Sala de Espera</strong><span>Fluxo: Aguardando → Atendido</span></div></div>
+      <div class="g-card"><img src="images/screenshot-laudos.png" alt="Laudos"><div class="g-label"><strong>Laudos de USG</strong><span>Estruturados com cálculo automático</span></div></div>
+      <div class="g-card"><img src="images/screenshot-prenatal.png" alt="Pré-Natal"><div class="g-label"><strong>Cartão Pré-Natal Digital</strong><span>Acompanhamento pelo celular</span></div></div>
+    </div>
   </div>
 </section>
 
 <section class="features">
-  <div class="features-top">
-    <span class="section-label">Por que o SCWeb?</span>
-    <h2 class="section-title">Especializado em <em>Ginecologia & Obstetrícia</em></h2>
-  </div>
-  <div class="features-grid">
-    <div class="feat"><div class="feat-icon">👩‍⚕️</div><h3>Criado por Especialistas</h3><p>Desenvolvido por um ginecologista e obstetra. Cada campo e fluxo reflete a prática real do consultório.</p></div>
-    <div class="feat"><div class="feat-icon">🔬</div><h3>Laudos de USG Estruturados</h3><p>USG Transvaginal, Morfológica, Mamária e Colposcopia com campos inteligentes e cálculo automático.</p></div>
-    <div class="feat"><div class="feat-icon">🗓</div><h3>Agenda com Google Calendar</h3><p>Sincronização direta. Consultas agendadas online aparecem automaticamente na grade da clínica.</p></div>
-    <div class="feat"><div class="feat-icon">📊</div><h3>Gráficos Clínicos Automáticos</h3><p>Curvas de Peso Fetal (Hadlock), Altura Uterina (Martinelli) e IMC Gestacional (Atalah) automáticas.</p></div>
-    <div class="feat"><div class="feat-icon">🤱</div><h3>Painel de Gestantes</h3><p>IG calculada automaticamente, código de cores por risco, DPP e hospital em um único painel.</p></div>
-    <div class="feat"><div class="feat-icon">💻</div><h3>100% Web, Sem Instalação</h3><p>Acesse de qualquer dispositivo. Sem instalação, sem servidor local. Dados seguros na nuvem.</p></div>
+  <div class="features-inner">
+    <div class="section-head">
+      <span class="label">Por que o SCWeb?</span>
+      <h2>Especializado em Ginecologia & Obstetrícia</h2>
+      <p>Não é um sistema genérico adaptado. Foi construído do zero por quem atende pacientes todos os dias.</p>
+    </div>
+    <div class="features-grid">
+      <div class="f-card"><div class="f-icon">👩‍⚕️</div><h3>Criado por Especialistas</h3><p>Desenvolvido por um ginecologista e obstetra. Cada campo e fluxo reflete a prática real do consultório.</p></div>
+      <div class="f-card"><div class="f-icon">🔬</div><h3>Laudos de USG Estruturados</h3><p>USG Transvaginal, Morfológica, Mamária e Colposcopia com campos inteligentes e cálculo automático.</p></div>
+      <div class="f-card"><div class="f-icon">🗓</div><h3>Agenda com Google Calendar</h3><p>Sincronização direta. Consultas agendadas online aparecem automaticamente na grade da clínica.</p></div>
+      <div class="f-card"><div class="f-icon">📊</div><h3>Gráficos Clínicos Automáticos</h3><p>Curvas de Peso Fetal (Hadlock), Altura Uterina (Martinelli) e IMC Gestacional (Atalah) automáticas.</p></div>
+      <div class="f-card"><div class="f-icon">🤱</div><h3>Painel de Gestantes</h3><p>IG calculada automaticamente, código de cores por risco, DPP e hospital em um único painel.</p></div>
+      <div class="f-card"><div class="f-icon">💻</div><h3>100% Web, Sem Instalação</h3><p>Acesse de qualquer dispositivo. Sem instalação, sem servidor local. Dados seguros na nuvem.</p></div>
+    </div>
   </div>
 </section>
 
 <section class="prenatal" id="prenatal">
-  <div class="prenatal-grid">
+  <div class="prenatal-inner">
     <div>
-      <span class="section-label">Exclusivo SCWeb</span>
-      <h2 class="section-title">Cartão de Pré-Natal <em>Digital</em></h2>
-      <p class="section-desc">A gestante acompanha o próprio pré-natal pelo celular, com dados integrados diretamente do sistema — sem redigitação.</p>
-      <div class="pn-items">
-        <div class="pn-item"><div class="pn-item-icon">⏳</div><div><h4>IG e DPP em Tempo Real</h4><p>Semanas e dias calculados automaticamente, com contagem regressiva para o parto.</p></div></div>
-        <div class="pn-item"><div class="pn-item-icon">📋</div><div><h4>Histórico Completo</h4><p>Consultas, exames e USGs acessíveis pelo celular a qualquer momento.</p></div></div>
-        <div class="pn-item"><div class="pn-item-icon">🌱</div><div><h4>Conteúdo Educativo Semanal</h4><p>Desenvolvimento do bebê semana a semana, de forma visual e acolhedora.</p></div></div>
-        <div class="pn-item"><div class="pn-item-icon">🔗</div><div><h4>Link Simples, Sem App</h4><p>O médico gera e envia o link. A paciente acessa direto no navegador.</p></div></div>
+      <span class="label" style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;display:block;margin-bottom:10px;">Exclusivo SCWeb</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:#111;letter-spacing:-.025em;line-height:1.15;margin-bottom:1rem;">Cartão de Pré-Natal Digital</h2>
+      <p style="color:#666;font-size:.97rem;line-height:1.75;margin-bottom:0;">A gestante acompanha o próprio pré-natal pelo celular, com dados integrados diretamente do sistema — sem redigitação.</p>
+      <div class="pn-points">
+        <div class="pn-pt"><div class="pn-icon">⏳</div><div><h4>IG e DPP em Tempo Real</h4><p>Semanas e dias calculados automaticamente, com contagem regressiva para o parto.</p></div></div>
+        <div class="pn-pt"><div class="pn-icon">📋</div><div><h4>Histórico Completo</h4><p>Consultas, exames e USGs acessíveis pelo celular a qualquer momento.</p></div></div>
+        <div class="pn-pt"><div class="pn-icon">🌱</div><div><h4>Conteúdo Educativo Semanal</h4><p>Desenvolvimento do bebê semana a semana, de forma visual e acolhedora.</p></div></div>
+        <div class="pn-pt"><div class="pn-icon">🔗</div><div><h4>Link Simples, Sem App</h4><p>O médico gera e envia o link. A paciente acessa direto no navegador.</p></div></div>
       </div>
     </div>
     <div class="phone-wrap">
       <div class="phone">
         <div class="phone-screen">
-          <div class="phone-sm">Cartão de Pré-Natal Digital · SCWeb</div>
-          <div class="phone-name">Olá, FERNANDA! 👋</div>
-          <div class="phone-ig">🍼 Carolina · 38 semanas e 5 dias</div>
-          <div class="phone-bar"><span class="phone-bar-fill"></span></div>
-          <div class="phone-dpp">📅 DPP: 07/04/2026 · Faltam 9 dias! 🎉</div>
-          <div class="phone-week">
-            <strong>🍎 Semana 38 — alho-poró</strong>
-            <span>🧠 Cérebro Crescendo — Formando conexões neurais importantes!</span>
-          </div>
+          <div class="p-sm">Cartão de Pré-Natal Digital · SCWeb</div>
+          <div class="p-name">Olá, FERNANDA! 👋</div>
+          <div class="p-ig">🍼 Carolina · 38 semanas e 5 dias</div>
+          <div class="p-bar"><span></span></div>
+          <div class="p-dpp">📅 DPP: 07/04/2026 · Faltam 9 dias! 🎉</div>
+          <div class="p-week"><strong>🍎 Semana 38 — alho-poró</strong><span>🧠 Cérebro Crescendo — Formando conexões neurais importantes!</span></div>
         </div>
       </div>
     </div>
@@ -372,39 +363,41 @@ footer { background: #0f0a1e; padding: 44px 7vw 28px; }
 </section>
 
 <section class="modules" id="modulos">
-  <div class="modules-top">
-    <span class="section-label">Módulos Completos</span>
-    <h2 class="section-title">Tudo que sua clínica precisa, <em>integrado</em></h2>
-  </div>
-  <div class="modules-grid">
-    <div class="mod"><div class="mod-icon">📊</div><h3>Dashboard</h3><p>Resumo do dia em tempo real.</p></div>
-    <div class="mod"><div class="mod-icon">⏱</div><h3>Sala de Espera</h3><p>Fluxo: Aguardando → Atendimento → Atendido.</p></div>
-    <div class="mod"><div class="mod-icon">👥</div><h3>Pacientes</h3><p>Base completa com busca por nome, RGHC ou CPF.</p></div>
-    <div class="mod"><div class="mod-icon">📅</div><h3>Agenda</h3><p>Grade com múltiplos turnos e Google Calendar.</p></div>
-    <div class="mod"><div class="mod-icon">📋</div><h3>Prontuário Ginecológico</h3><p>Ficha completa em abas: queixas, antecedentes, DIU, implantes e diagnósticos.</p></div>
-    <div class="mod"><div class="mod-icon">👶</div><h3>Ficha Obstétrica</h3><p>USG, consultas, vitalidade, vacinas, plano de parto e berçário.</p></div>
-    <div class="mod"><div class="mod-icon">🔬</div><h3>Exames</h3><p>Atalhos por perfil: Pré-Natal, SOP, Climatério e mais.</p></div>
-    <div class="mod"><div class="mod-icon">🖨</div><h3>Laudos de USG</h3><p>Transvaginal, Morfológica, Mamária e Colposcopia.</p></div>
-    <div class="mod"><div class="mod-icon">💊</div><h3>Receituários</h3><p>Prescrição com banco de medicamentos e posologia.</p></div>
-    <div class="mod"><div class="mod-icon">🩺</div><h3>Mastologia</h3><p>PAAF, Core Biópsia, Mamotomia e Agulhamento.</p></div>
-    <div class="mod"><div class="mod-icon">📄</div><h3>Atestados & Documentos</h3><p>Licença maternidade, encaminhamentos e vacinas.</p></div>
-    <div class="mod"><div class="mod-icon">💰</div><h3>Faturamento</h3><p>Controle por convênio, recibos e notas fiscais.</p></div>
+  <div class="modules-inner">
+    <div class="section-head">
+      <span class="label">Módulos Completos</span>
+      <h2>Tudo que sua clínica precisa, integrado</h2>
+    </div>
+    <div class="modules-grid">
+      <div class="m-card"><div class="m-icon">📊</div><h3>Dashboard</h3><p>Resumo do dia em tempo real.</p></div>
+      <div class="m-card"><div class="m-icon">⏱</div><h3>Sala de Espera</h3><p>Fluxo: Aguardando → Atendimento → Atendido.</p></div>
+      <div class="m-card"><div class="m-icon">👥</div><h3>Pacientes</h3><p>Base completa com busca por nome, RGHC ou CPF.</p></div>
+      <div class="m-card"><div class="m-icon">📅</div><h3>Agenda</h3><p>Grade com múltiplos turnos e Google Calendar.</p></div>
+      <div class="m-card"><div class="m-icon">📋</div><h3>Prontuário Ginecológico</h3><p>Ficha completa em abas: queixas, antecedentes, DIU e diagnósticos.</p></div>
+      <div class="m-card"><div class="m-icon">👶</div><h3>Ficha Obstétrica</h3><p>USG, consultas, vitalidade, vacinas e plano de parto.</p></div>
+      <div class="m-card"><div class="m-icon">🔬</div><h3>Exames</h3><p>Atalhos por perfil: Pré-Natal, SOP, Climatério e mais.</p></div>
+      <div class="m-card"><div class="m-icon">🖨</div><h3>Laudos de USG</h3><p>Transvaginal, Morfológica, Mamária e Colposcopia.</p></div>
+      <div class="m-card"><div class="m-icon">💊</div><h3>Receituários</h3><p>Prescrição com banco de medicamentos e posologia.</p></div>
+      <div class="m-card"><div class="m-icon">🩺</div><h3>Mastologia</h3><p>PAAF, Core Biópsia, Mamotomia e Agulhamento.</p></div>
+      <div class="m-card"><div class="m-icon">📄</div><h3>Atestados & Documentos</h3><p>Licença maternidade, encaminhamentos e vacinas.</p></div>
+      <div class="m-card"><div class="m-icon">💰</div><h3>Faturamento</h3><p>Controle por convênio, recibos e notas fiscais.</p></div>
+    </div>
   </div>
 </section>
 
-<section class="quote-section">
+<section class="quote-sec">
   <div class="quote-inner">
-    <div class="quote-box">
-      <p class="quote-text">Criamos o SCWeb porque sentimos falta de um sistema que realmente entendesse a rotina de uma clínica de ginecologia. Cada tela, cada campo, cada atalho foi pensado por quem atende pacientes todos os dias.</p>
-      <div class="quote-author">— <strong>Dr. Silvio Martinelli</strong>, Ginecologista e Obstetra · Criador do SCWeb</div>
+    <div class="q-box">
+      <p class="q-text">Criamos o SCWeb porque sentimos falta de um sistema que realmente entendesse a rotina de uma clínica de ginecologia. Cada tela, cada campo, cada atalho foi pensado por quem atende pacientes todos os dias.</p>
+      <div class="q-author">— <strong>Dr. Silvio Martinelli</strong>, Ginecologista e Obstetra · Criador do SCWeb</div>
     </div>
-    <div class="quote-copy">
-      <span class="section-label">Nossa História</span>
-      <h2 class="section-title">Um sistema que fala a língua do <em>ginecologista</em></h2>
-      <div class="quote-points">
-        <div class="quote-point"><div class="quote-point-icon">🎯</div><div><h4>Especialidade, não generalidade</h4><p>Construído do zero para GO — não é um sistema genérico adaptado.</p></div></div>
-        <div class="quote-point"><div class="quote-point-icon">⚡</div><div><h4>Rápido e intuitivo</h4><p>Atalhos, cálculos automáticos e campos inteligentes para menos tempo digitando.</p></div></div>
-        <div class="quote-point"><div class="quote-point-icon">🔄</div><div><h4>Em constante evolução</h4><p>Novas funcionalidades adicionadas continuamente com base no feedback de quem usa.</p></div></div>
+    <div>
+      <span class="label" style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;display:block;margin-bottom:10px;">Nossa História</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;color:#111;letter-spacing:-.025em;line-height:1.15;">Um sistema que fala a língua do ginecologista</h2>
+      <div class="q-points">
+        <div class="q-pt"><div class="q-pt-icon">🎯</div><div><h4>Especialidade, não generalidade</h4><p>Construído do zero para GO — não é um sistema genérico adaptado.</p></div></div>
+        <div class="q-pt"><div class="q-pt-icon">⚡</div><div><h4>Rápido e intuitivo</h4><p>Atalhos, cálculos automáticos e campos inteligentes para menos tempo digitando.</p></div></div>
+        <div class="q-pt"><div class="q-pt-icon">🔄</div><div><h4>Em constante evolução</h4><p>Novas funcionalidades adicionadas continuamente com base no feedback de quem usa.</p></div></div>
       </div>
     </div>
   </div>
@@ -413,30 +406,27 @@ footer { background: #0f0a1e; padding: 44px 7vw 28px; }
 <section class="contact" id="contato">
   <div class="contact-inner">
     <div class="contact-copy">
-      <span class="section-label">Fale com a gente</span>
+      <span style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;display:block;margin-bottom:10px;">Fale com a gente</span>
       <h2>Solicite uma demonstração gratuita</h2>
       <p>Apresentamos o SCWeb ao vivo para você ver como o sistema funciona na rotina da sua clínica.</p>
-      <div class="contact-detail"><span>🌐</span> scweb.com.br</div>
-      <div class="contact-detail"><span>📍</span> Brasil — Sistema 100% Web</div>
-      <div class="contact-detail"><span>👨‍⚕️</span> Suporte direto com os criadores</div>
+      <div class="c-detail"><span>🌐</span> scweb.com.br</div>
+      <div class="c-detail"><span>📍</span> Brasil — Sistema 100% Web</div>
+      <div class="c-detail"><span>👨‍⚕️</span> Suporte direto com os criadores</div>
     </div>
     <div class="contact-form">
       <form id="form">
-        <div class="form-row">
-          <div class="form-group"><label>Nome *</label><input type="text" placeholder="Dr(a). Seu Nome" required></div>
-          <div class="form-group"><label>Clínica *</label><input type="text" placeholder="Nome da clínica" required></div>
+        <div class="fg-row">
+          <div class="fg"><label>Nome *</label><input type="text" placeholder="Dr(a). Seu Nome" required></div>
+          <div class="fg"><label>Clínica *</label><input type="text" placeholder="Nome da clínica" required></div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>E-mail *</label><input type="email" placeholder="seu@email.com" required></div>
-          <div class="form-group"><label>WhatsApp *</label><input type="tel" placeholder="(11) 99999-9999" required></div>
+        <div class="fg-row">
+          <div class="fg"><label>E-mail *</label><input type="email" placeholder="seu@email.com" required></div>
+          <div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="(11) 99999-9999" required></div>
         </div>
-        <div class="form-group">
-          <label>Médicos na clínica</label>
-          <select><option>Apenas eu</option><option>2 a 3 médicos</option><option>4 a 10 médicos</option><option>Mais de 10</option></select>
-        </div>
-        <div class="form-group"><label>Mensagem (opcional)</label><textarea rows="3" placeholder="O que gostaria de ver na demonstração?"></textarea></div>
-        <button type="submit" class="form-submit">Quero conhecer o SCWeb →</button>
-        <div class="form-ok" id="formOk">🎉 Solicitação enviada! Entraremos em contato em breve.</div>
+        <div class="fg"><label>Médicos na clínica</label><select><option>Apenas eu</option><option>2 a 3 médicos</option><option>4 a 10 médicos</option><option>Mais de 10</option></select></div>
+        <div class="fg"><label>Mensagem (opcional)</label><textarea rows="3" placeholder="O que gostaria de ver na demonstração?"></textarea></div>
+        <button type="submit" class="f-submit">Quero conhecer o SCWeb →</button>
+        <div class="f-ok" id="fok">🎉 Solicitação enviada! Entraremos em contato em breve.</div>
       </form>
     </div>
   </div>
@@ -456,73 +446,52 @@ footer { background: #0f0a1e; padding: 44px 7vw 28px; }
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
 <div id="lb">
-  <div id="lb-close">✕</div>
-  <div id="lb-prev">‹</div>
-  <img src="" alt="" id="lb-img">
-  <div id="lb-next">›</div>
-  <div id="lb-cap"></div>
+  <div id="lb-x">✕</div>
+  <div id="lb-p">‹</div>
+  <img src="" alt="" id="lb-i">
+  <div id="lb-n">›</div>
+  <div id="lb-c"></div>
 </div>
 
 <script>
-// Nav
-window.addEventListener('scroll', function() {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').style.boxShadow=scrollY>10?'0 2px 16px rgba(0,0,0,.08)':'none';
 });
-
-// Form
-document.getElementById('form').addEventListener('submit', function(e) {
+document.getElementById('form').addEventListener('submit',function(e){
   e.preventDefault();
-  document.getElementById('formOk').style.display = 'block';
+  document.getElementById('fok').style.display='block';
   this.reset();
 });
-
-// Lightbox
-var lb = document.getElementById('lb');
-var lbImg = document.getElementById('lb-img');
-var lbCap = document.getElementById('lb-cap');
-var items = [];
-var idx = 0;
-
-document.querySelectorAll('.screen-card').forEach(function(el, i) {
-  var img = el.querySelector('img');
-  var cap = el.querySelector('.screen-label strong');
-  if (!img) return;
-  items.push({ src: img.src, cap: cap ? cap.textContent : '' });
-  el.addEventListener('click', function() {
-    idx = i;
-    lbImg.src = items[i].src;
-    lbCap.textContent = items[i].cap;
-    lb.className = 'on';
-    document.body.style.overflow = 'hidden';
+var lb=document.getElementById('lb');
+var li=document.getElementById('lb-i');
+var lc=document.getElementById('lb-c');
+var its=[],idx=0;
+document.querySelectorAll('.g-card').forEach(function(el,i){
+  var img=el.querySelector('img');
+  var cap=el.querySelector('.g-label strong');
+  if(!img)return;
+  its.push({src:img.src,cap:cap?cap.textContent:''});
+  el.addEventListener('click',function(){
+    idx=i;li.src=its[i].src;lc.textContent=its[i].cap;
+    lb.className='on';document.body.style.overflow='hidden';
   });
 });
-
-function closeLb() {
-  lb.className = '';
-  document.body.style.overflow = '';
+function close(){lb.className='';document.body.style.overflow='';}
+function go(d){
+  idx=(idx+d+its.length)%its.length;
+  li.style.opacity='0';
+  setTimeout(function(){li.src=its[idx].src;lc.textContent=its[idx].cap;li.style.opacity='1';},120);
 }
-
-function goLb(dir) {
-  idx = (idx + dir + items.length) % items.length;
-  lbImg.style.opacity = '0';
-  setTimeout(function() {
-    lbImg.src = items[idx].src;
-    lbCap.textContent = items[idx].cap;
-    lbImg.style.opacity = '1';
-  }, 120);
-}
-
-lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
-document.getElementById('lb-close').addEventListener('click', closeLb);
-document.getElementById('lb-prev').addEventListener('click', function(e) { e.stopPropagation(); goLb(-1); });
-document.getElementById('lb-next').addEventListener('click', function(e) { e.stopPropagation(); goLb(1); });
-document.addEventListener('keydown', function(e) {
-  if (lb.className !== 'on') return;
-  if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowLeft') goLb(-1);
-  if (e.key === 'ArrowRight') goLb(1);
+lb.addEventListener('click',function(e){if(e.target===lb)close();});
+document.getElementById('lb-x').addEventListener('click',close);
+document.getElementById('lb-p').addEventListener('click',function(e){e.stopPropagation();go(-1);});
+document.getElementById('lb-n').addEventListener('click',function(e){e.stopPropagation();go(1);});
+document.addEventListener('keydown',function(e){
+  if(lb.className!=='on')return;
+  if(e.key==='Escape')close();
+  if(e.key==='ArrowLeft')go(-1);
+  if(e.key==='ArrowRight')go(1);
 });
 </script>
 </body>
