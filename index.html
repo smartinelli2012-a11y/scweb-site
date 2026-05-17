@@ -4,6 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SCWeb — Plataforma completa para Ginecologia & Obstetrícia</title>
+<meta name="description" content="SCWeb é uma plataforma web e mobile criada por ginecologista para clínicas de Ginecologia e Obstetrícia. Prontuário, agenda, pré-natal digital, laudos de USG, receitas com assinatura digital e muito mais.">
+<link rel="canonical" href="https://smartinelli2012-a11y.github.io/scweb-site/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://smartinelli2012-a11y.github.io/scweb-site/">
+<meta property="og:title" content="SCWeb — Plataforma completa para Ginecologia & Obstetrícia">
+<meta property="og:description" content="Software de gestão criado por ginecologista. Prontuário, agenda, pré-natal digital, laudos, receitas e assinatura digital — tudo em um só lugar.">
+<meta property="og:image" content="images/Dashboard.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SCWeb — Plataforma completa para Ginecologia & Obstetrícia">
+<meta name="twitter:description" content="Software de gestão criado por ginecologista. Prontuário, agenda, pré-natal digital, laudos, receitas e assinatura digital.">
+<meta name="twitter:image" content="images/Dashboard.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -93,12 +104,18 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08);}
 .carousel-btn.next{right:16px;}
 .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap;}
 .carousel-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:rgba(255,255,255,.25);cursor:pointer;
+  width:24px;height:24px;border-radius:50%;
+  background:transparent;cursor:pointer;
   transition:all .2s;border:none;padding:0;
+  display:flex;align-items:center;justify-content:center;
 }
-.carousel-dot.active{background:#a855f7;width:24px;border-radius:4px;}
-.carousel-counter{text-align:center;color:rgba(255,255,255,.4);font-size:.8rem;margin-top:10px;}
+.carousel-dot::after{
+  content:'';width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.25);display:block;
+  transition:all .2s;
+}
+.carousel-dot.active::after{background:#a855f7;width:24px;border-radius:4px;}
+.carousel-counter{text-align:center;color:rgba(255,255,255,.65);font-size:.8rem;margin-top:10px;}
 
 /* DIFERENCIAIS */
 .diffs{background:#fff;padding:96px 6vw;}
@@ -211,9 +228,9 @@ footer{background:#111;padding:44px 6vw 28px;}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
 .footer-logo img{height:28px;filter:brightness(0) invert(.7);}
 .footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
-.footer-links a{font-size:.82rem;color:rgba(255,255,255,.4);transition:color .2s;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.65);transition:color .2s;}
 .footer-links a:hover{color:#c084fc;}
-.footer-copy{font-size:.78rem;color:rgba(255,255,255,.25);}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.45);}
 
 /* LIGHTBOX */
 #lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center;}
@@ -243,6 +260,8 @@ footer{background:#111;padding:44px 6vw 28px;}
 </head>
 <body>
 
+<a href="#conteudo" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999;background:#6b21a8;color:#fff;padding:10px 20px;border-radius:0 0 8px 0;" onfocus="this.style.left='0';this.style.width='auto';this.style.height='auto';" onblur="this.style.left='-9999px';this.style.width='1px';this.style.height='1px';">Pular para o conteúdo</a>
+
 <nav id="nav">
   <a href="#top"><img src="images/scweb-logo-tight-final.png" alt="SCWeb" style="height:36px;"></a>
   <ul class="nav-links">
@@ -255,6 +274,7 @@ footer{background:#111;padding:44px 6vw 28px;}
 </nav>
 
 <!-- HERO -->
+<main id="conteudo">
 <section class="hero" id="top">
   <div class="hero-inner">
     <div>
@@ -297,31 +317,31 @@ footer{background:#111;padding:44px 6vw 28px;}
     <div class="carousel-wrap">
       <div class="carousel-track-outer">
         <div class="carousel-track" id="carTrack">
-          <div class="carousel-slide"><img src="images/Dashboard.png" alt="Dashboard"><div class="carousel-caption"><strong>Dashboard</strong><span>Visão geral do dia em tempo real</span></div></div>
-          <div class="carousel-slide"><img src="images/Agenda_integrada.png" alt="Agenda"><div class="carousel-caption"><strong>Agenda Integrada</strong><span>Grade completa com confirmação automática</span></div></div>
-          <div class="carousel-slide"><img src="images/Gesta_o_de_Pacientes.png" alt="Pacientes"><div class="carousel-caption"><strong>Gestão de Pacientes</strong><span>Base completa com busca rápida</span></div></div>
-          <div class="carousel-slide"><img src="images/Sala_de_Espera.png" alt="Sala de Espera"><div class="carousel-caption"><strong>Sala de Espera</strong><span>Fila com tempo de espera em tempo real</span></div></div>
-          <div class="carousel-slide"><img src="images/Solicitacao_de_exames.png" alt="Solicitação de Exames"><div class="carousel-caption"><strong>Solicitação de Exames</strong><span>Atalhos por rotina clínica</span></div></div>
-          <div class="carousel-slide"><img src="images/Exames_de_imagem.png" alt="Exames de Imagem"><div class="carousel-caption"><strong>Exames de Imagem</strong><span>USG, mamografia, densitometria e mais</span></div></div>
-          <div class="carousel-slide"><img src="images/Exames_Laboratoriais_por_Data.png" alt="Exames Laboratoriais"><div class="carousel-caption"><strong>Exames Laboratoriais por Data</strong><span>Visualização comparativa por data</span></div></div>
-          <div class="carousel-slide"><img src="images/Importacao_de_Exames_em_pdf.png" alt="Importação de Exames"><div class="carousel-caption"><strong>Importação de Exames em PDF</strong><span>DASA, Lavoisier, Fleury e mais</span></div></div>
-          <div class="carousel-slide"><img src="images/Laudos_de_USG_e_Colposcopia.png" alt="Laudos"><div class="carousel-caption"><strong>Laudos de USG e Colposcopia</strong><span>Transvaginal, Morfológica, Mamária e mais</span></div></div>
-          <div class="carousel-slide"><img src="images/USGs_Obste_tricas.png" alt="USGs Obstétricas"><div class="carousel-caption"><strong>USGs Obstétricas</strong><span>Biometria, peso estimado e gráficos</span></div></div>
-          <div class="carousel-slide"><img src="images/Ficha_Obste_trica_Completa.png" alt="Ficha Obstétrica"><div class="carousel-caption"><strong>Ficha Obstétrica Completa</strong><span>Consultas pré-natais com curvas</span></div></div>
-          <div class="carousel-slide"><img src="images/Painel_de_Gestantes_em_acompanhamento.png" alt="Painel de Gestantes"><div class="carousel-caption"><strong>Painel de Gestantes</strong><span>IG, DPP, hospital e paridade</span></div></div>
-          <div class="carousel-slide"><img src="images/Link_do_Cartao_de_Pre_-Natal_Digital.png" alt="Cartão Pré-Natal"><div class="carousel-caption"><strong>Cartão Pré-Natal Digital</strong><span>Link para a paciente pelo celular</span></div></div>
-          <div class="carousel-slide"><img src="images/Controle_de_Glicemia_em_tempo_real_com_a_gestante.png" alt="Controle de Glicemia"><div class="carousel-caption"><strong>Controle de Glicemia em Tempo Real</strong><span>DMG com histórico semanal</span></div></div>
-          <div class="carousel-slide"><img src="images/Ficha_Ginecolo_gica_Completa.png" alt="Ficha Ginecológica"><div class="carousel-caption"><strong>Ficha Ginecológica Completa</strong><span>Retornos, DIU, implanon e laser</span></div></div>
-          <div class="carousel-slide"><img src="images/Receitua_rio.png" alt="Receituário"><div class="carousel-caption"><strong>Receituário</strong><span>Prescrição com assinatura digital</span></div></div>
-          <div class="carousel-slide"><img src="images/Receituario_de_Controle_Especial.png" alt="Controle Especial"><div class="carousel-caption"><strong>Receituário de Controle Especial</strong><span>C1 e C2 com numeração automática</span></div></div>
-          <div class="carousel-slide"><img src="images/Exames_Mastologia.png" alt="Mastologia"><div class="carousel-caption"><strong>Exames de Mastologia</strong><span>PAAF, Core Biópsia, Mamotomia e mais</span></div></div>
-          <div class="carousel-slide"><img src="images/Bioimpeda_ncia.png" alt="Bioimpedância"><div class="carousel-caption"><strong>Bioimpedância</strong><span>Evolução de peso, IMC e composição corporal</span></div></div>
-          <div class="carousel-slide"><img src="images/Relato_rios_e_Documentos.png" alt="Relatórios"><div class="carousel-caption"><strong>Relatórios e Documentos</strong><span>Atestados, licenças e encaminhamentos</span></div></div>
-          <div class="carousel-slide"><img src="images/Lembretes.png" alt="Lembretes"><div class="carousel-caption"><strong>Lembretes</strong><span>Recall automático por WhatsApp</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Dashboard.png" alt="Dashboard"><div class="carousel-caption"><strong>Dashboard</strong><span>Visão geral do dia em tempo real</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Agenda_integrada.png" alt="Agenda"><div class="carousel-caption"><strong>Agenda Integrada</strong><span>Grade completa com confirmação automática</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Gesta_o_de_Pacientes.png" alt="Pacientes"><div class="carousel-caption"><strong>Gestão de Pacientes</strong><span>Base completa com busca rápida</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Sala_de_Espera.png" alt="Sala de Espera"><div class="carousel-caption"><strong>Sala de Espera</strong><span>Fila com tempo de espera em tempo real</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Solicitacao_de_exames.png" alt="Solicitação de Exames"><div class="carousel-caption"><strong>Solicitação de Exames</strong><span>Atalhos por rotina clínica</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Exames_de_imagem.png" alt="Exames de Imagem"><div class="carousel-caption"><strong>Exames de Imagem</strong><span>USG, mamografia, densitometria e mais</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Exames_Laboratoriais_por_Data.png" alt="Exames Laboratoriais"><div class="carousel-caption"><strong>Exames Laboratoriais por Data</strong><span>Visualização comparativa por data</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Importacao_de_Exames_em_pdf.png" alt="Importação de Exames"><div class="carousel-caption"><strong>Importação de Exames em PDF</strong><span>DASA, Lavoisier, Fleury e mais</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Laudos_de_USG_e_Colposcopia.png" alt="Laudos"><div class="carousel-caption"><strong>Laudos de USG e Colposcopia</strong><span>Transvaginal, Morfológica, Mamária e mais</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/USGs_Obste_tricas.png" alt="USGs Obstétricas"><div class="carousel-caption"><strong>USGs Obstétricas</strong><span>Biometria, peso estimado e gráficos</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Ficha_Obste_trica_Completa.png" alt="Ficha Obstétrica"><div class="carousel-caption"><strong>Ficha Obstétrica Completa</strong><span>Consultas pré-natais com curvas</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Painel_de_Gestantes_em_acompanhamento.png" alt="Painel de Gestantes"><div class="carousel-caption"><strong>Painel de Gestantes</strong><span>IG, DPP, hospital e paridade</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Link_do_Cartao_de_Pre_-Natal_Digital.png" alt="Cartão Pré-Natal"><div class="carousel-caption"><strong>Cartão Pré-Natal Digital</strong><span>Link para a paciente pelo celular</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Controle_de_Glicemia_em_tempo_real_com_a_gestante.png" alt="Controle de Glicemia"><div class="carousel-caption"><strong>Controle de Glicemia em Tempo Real</strong><span>DMG com histórico semanal</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Ficha_Ginecolo_gica_Completa.png" alt="Ficha Ginecológica"><div class="carousel-caption"><strong>Ficha Ginecológica Completa</strong><span>Retornos, DIU, implanon e laser</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Receitua_rio.png" alt="Receituário"><div class="carousel-caption"><strong>Receituário</strong><span>Prescrição com assinatura digital</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Receituario_de_Controle_Especial.png" alt="Controle Especial"><div class="carousel-caption"><strong>Receituário de Controle Especial</strong><span>C1 e C2 com numeração automática</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Exames_Mastologia.png" alt="Mastologia"><div class="carousel-caption"><strong>Exames de Mastologia</strong><span>PAAF, Core Biópsia, Mamotomia e mais</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Bioimpeda_ncia.png" alt="Bioimpedância"><div class="carousel-caption"><strong>Bioimpedância</strong><span>Evolução de peso, IMC e composição corporal</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Relato_rios_e_Documentos.png" alt="Relatórios"><div class="carousel-caption"><strong>Relatórios e Documentos</strong><span>Atestados, licenças e encaminhamentos</span></div></div>
+          <div class="carousel-slide"><img loading="lazy" src="images/Lembretes.png" alt="Lembretes"><div class="carousel-caption"><strong>Lembretes</strong><span>Recall automático por WhatsApp</span></div></div>
         </div>
       </div>
-      <button class="carousel-btn prev" id="carPrev">‹</button>
-      <button class="carousel-btn next" id="carNext">›</button>
+      <button class="carousel-btn prev" id="carPrev" aria-label="Slide anterior">‹</button>
+      <button class="carousel-btn next" id="carNext" aria-label="Próximo slide">›</button>
       <div class="carousel-dots" id="carDots"></div>
       <div class="carousel-counter" id="carCounter">1 / 21</div>
     </div>
@@ -351,7 +371,7 @@ footer{background:#111;padding:44px 6vw 28px;}
 <section class="agenda-sec">
   <div class="agenda-inner">
     <div class="hero-img">
-      <img src="images/Agenda_integrada.png" alt="Agenda SCWeb">
+      <img loading="lazy" src="images/Agenda_integrada.png" alt="Agenda SCWeb">
     </div>
     <div>
       <span class="lbl" style="color:#6b21a8;">Agenda Inteligente</span>
@@ -399,7 +419,7 @@ footer{background:#111;padding:44px 6vw 28px;}
       </div>
     </div>
     <div class="hero-img">
-      <img src="images/Solicitacao_de_exames.png" alt="Exames SCWeb">
+      <img loading="lazy" src="images/Solicitacao_de_exames.png" alt="Exames SCWeb">
     </div>
   </div>
 </section>
@@ -418,15 +438,15 @@ footer{background:#111;padding:44px 6vw 28px;}
         <div class="pn-pt"><div class="pn-icon">📤</div><div><h4>Botão exportar</h4><p>Envia todas as informações do pré-natal por email, WhatsApp ou qualquer app de mensagem.</p></div></div>
       </div>
       <div style="margin-top:2rem;">
-        <a href="https://www.pndigital.com.br/pacientes" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#6b21a8;color:#fff;padding:13px 26px;border-radius:8px;font-size:.95rem;font-weight:700;transition:background .2s;">
+        <a href="https://www.pndigital.com.br/pacientes" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;background:#6b21a8;color:#fff;padding:13px 26px;border-radius:8px;font-size:.95rem;font-weight:700;transition:background .2s;">
           Ver o Cartão de Pré-Natal Digital →
         </a>
-        <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-top:10px;">pndigital.com.br</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.6);margin-top:10px;">pndigital.com.br</p>
       </div>
     </div>
     <div class="phone-wrap">
       <div style="border-radius:32px;overflow:hidden;box-shadow:0 24px 64px rgba(107,33,168,.25);border:2px solid rgba(107,33,168,.15);max-width:320px;">
-        <img src="images/screenshot-prenatal-real.png" alt="Cartão de Pré-Natal Digital SCWeb" style="width:100%;display:block;">
+        <img loading="lazy" src="images/screenshot-prenatal-real.png" alt="Cartão de Pré-Natal Digital SCWeb" style="width:100%;display:block;">
       </div>
     </div>
   </div>
@@ -437,7 +457,7 @@ footer{background:#111;padding:44px 6vw 28px;}
   <div class="birdi-inner">
     <div class="birdi-icon">✍️</div>
     <div class="birdi-text">
-      <h2>Assinatura Digital BirdID — não imprima mais nada</h2>
+      <h3 style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;color:#111;letter-spacing:-.025em;margin-bottom:.75rem;">Assinatura Digital BirdID — não imprima mais nada</h3>
       <p>Assine digitalmente todos os documentos, receitas (incluindo controle especial), laudos, atestados, pedidos de exames e relatórios. Tudo com validade jurídica, diretamente pelo SCWeb.</p>
     </div>
   </div>
@@ -468,21 +488,23 @@ footer{background:#111;padding:44px 6vw 28px;}
     <div class="contact-form">
       <form id="form">
         <div class="fg-row">
-          <div class="fg"><label>Nome *</label><input type="text" placeholder="Dr(a). Seu Nome" required></div>
-          <div class="fg"><label>Clínica *</label><input type="text" placeholder="Nome da clínica" required></div>
+          <div class="fg"><label for="f-nome">Nome *</label><input id="f-nome" name="nome" type="text" placeholder="Dr(a). Seu Nome" required></div>
+          <div class="fg"><label for="f-clinica">Clínica *</label><input id="f-clinica" name="clinica" type="text" placeholder="Nome da clínica" required></div>
         </div>
         <div class="fg-row">
-          <div class="fg"><label>E-mail *</label><input type="email" placeholder="seu@email.com" required></div>
-          <div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="(11) 99999-9999" required></div>
+          <div class="fg"><label for="f-email">E-mail *</label><input id="f-email" name="email" type="email" placeholder="seu@email.com" required></div>
+          <div class="fg"><label for="f-whatsapp">WhatsApp *</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" required></div>
         </div>
-        <div class="fg"><label>Médicos na clínica</label><select><option>Apenas eu</option><option>2 a 3 médicos</option><option>4 a 10 médicos</option><option>Mais de 10</option></select></div>
-        <div class="fg"><label>Mensagem (opcional)</label><textarea rows="3" placeholder="Alguma dúvida ou comentário?"></textarea></div>
+        <div class="fg"><label for="f-medicos">Médicos na clínica</label><select id="f-medicos" name="medicos"><option>Apenas eu</option><option>2 a 3 médicos</option><option>4 a 10 médicos</option><option>Mais de 10</option></select></div>
+        <div class="fg"><label for="f-mensagem">Mensagem (opcional)</label><textarea id="f-mensagem" name="mensagem" rows="3" placeholder="Alguma dúvida ou comentário?"></textarea></div>
         <button type="submit" class="f-submit">Comece a usar gratuitamente →</button>
         <div class="f-ok" id="fok">🎉 Solicitação enviada! Você receberá o código TRIAL por email em breve.</div>
       </form>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="footer-inner">
@@ -492,7 +514,7 @@ footer{background:#111;padding:44px 6vw 28px;}
       <a href="#prenatal">Pré-Natal Digital</a>
       <a href="#modulos">Módulos</a>
       <a href="#contato">Contato</a>
-      <a href="https://www.scweb.com.br" target="_blank">Acessar o Sistema</a>
+      <a href="https://www.scweb.com.br" target="_blank" rel="noopener noreferrer">Acessar o Sistema</a>
     </div>
     <p class="footer-copy">© 2026 SCWeb · Ginecologia & Obstetrícia</p>
   </div>
@@ -528,9 +550,14 @@ var total = carSlides.length;
 var cur = 0;
 var autoTimer;
 
-carSlides.forEach(function(_,i){
+var slideLabels = [];
+carSlides.forEach(function(slide, i){
+  var caption = slide.querySelector('.carousel-caption strong');
+  slideLabels.push(caption ? caption.textContent : 'Slide ' + (i+1));
   var d = document.createElement('button');
   d.className = 'carousel-dot' + (i===0?' active':'');
+  d.setAttribute('aria-label', 'Ir para slide ' + (i+1) + ': ' + slideLabels[i]);
+  if(i===0) d.setAttribute('aria-current', 'true');
   d.addEventListener('click', function(){ goTo(i); });
   dotsWrap.appendChild(d);
 });
@@ -540,6 +567,8 @@ function goTo(n){
   track.style.transform = 'translateX(-' + cur*100 + '%)';
   dotsWrap.querySelectorAll('.carousel-dot').forEach(function(d,i){
     d.classList.toggle('active', i===cur);
+    if(i===cur){ d.setAttribute('aria-current','true'); }
+    else { d.removeAttribute('aria-current'); }
   });
   counter.textContent = (cur+1) + ' / ' + total;
   resetAuto();
