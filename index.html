@@ -487,16 +487,21 @@ footer{background:#111;padding:44px 6vw 28px;}
     </div>
     <div class="contact-form">
       <form id="form">
+        <div class="fg"><label for="f-clinica">Nome da Clínica *</label><input id="f-clinica" name="clinica" type="text" placeholder="Nome da clínica" required></div>
+        <div class="fg"><label for="f-endereco">Endereço *</label><input id="f-endereco" name="endereco" type="text" placeholder="Rua, número, complemento" required></div>
         <div class="fg-row">
-          <div class="fg"><label for="f-nome">Nome *</label><input id="f-nome" name="nome" type="text" placeholder="Dr(a). Seu Nome" required></div>
-          <div class="fg"><label for="f-clinica">Clínica *</label><input id="f-clinica" name="clinica" type="text" placeholder="Nome da clínica" required></div>
+          <div class="fg"><label for="f-bairro">Bairro *</label><input id="f-bairro" name="bairro" type="text" placeholder="Bairro" required></div>
+          <div class="fg"><label for="f-cidade">Cidade *</label><input id="f-cidade" name="cidade" type="text" placeholder="Cidade" required></div>
         </div>
         <div class="fg-row">
-          <div class="fg"><label for="f-email">E-mail *</label><input id="f-email" name="email" type="email" placeholder="seu@email.com" required></div>
-          <div class="fg"><label for="f-whatsapp">WhatsApp *</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" required></div>
+          <div class="fg"><label for="f-estado">Estado *</label><input id="f-estado" name="estado" type="text" placeholder="SP" maxlength="2" required></div>
+          <div class="fg"><label for="f-cep">CEP *</label><input id="f-cep" name="cep" type="text" placeholder="00000-000" required></div>
         </div>
-        <div class="fg"><label for="f-medicos">Médicos na clínica</label><select id="f-medicos" name="medicos"><option>Apenas eu</option><option>2 a 3 médicos</option><option>4 a 10 médicos</option><option>Mais de 10</option></select></div>
-        <div class="fg"><label for="f-mensagem">Mensagem (opcional)</label><textarea id="f-mensagem" name="mensagem" rows="3" placeholder="Alguma dúvida ou comentário?"></textarea></div>
+        <div class="fg"><label for="f-nome">Nome completo do Gestor *</label><input id="f-nome" name="nome" type="text" placeholder="Nome completo" required></div>
+        <div class="fg-row">
+          <div class="fg"><label for="f-email">E-mail do Gestor *</label><input id="f-email" name="email" type="email" placeholder="seu@email.com" required></div>
+          <div class="fg"><label for="f-whatsapp">WhatsApp do Gestor *</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" required></div>
+        </div>
         <button type="submit" class="f-submit">Comece a usar gratuitamente →</button>
         <div class="f-ok" id="fok">🎉 Solicitação enviada! Você receberá o código TRIAL por email em breve.</div>
       </form>
