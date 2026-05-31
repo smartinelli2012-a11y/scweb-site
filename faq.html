@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — SCWeb</title>
+<meta name="description" content="Perguntas frequentes sobre o SCWeb, plataforma de gestão para Ginecologia e Obstetrícia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#111;background:#fff;overflow-x:hidden;line-height:1.6;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;height:80px;
+  background:#fff;border-bottom:1px solid #f0f0f0;
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08);}
+.nav-links{list-style:none;display:flex;gap:2rem;}
+.nav-links a{font-size:.875rem;font-weight:500;color:#555;transition:color .2s;}
+.nav-links a:hover{color:#6b21a8;}
+.nav-cta{background:#6b21a8;color:#fff;padding:10px 22px;border-radius:8px;font-size:.875rem;font-weight:700;transition:background .2s;}
+.nav-cta:hover{background:#581c87;}
+
+/* PAGE HERO */
+.page-hero{padding:140px 6vw 72px;background:#f9f5ff;border-bottom:1px solid #ede9fe;}
+.page-hero-inner{max-width:760px;margin:0 auto;text-align:center;}
+.lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;display:block;margin-bottom:12px;}
+.page-hero h1{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;letter-spacing:-.025em;line-height:1.15;color:#111;margin-bottom:1rem;}
+.page-hero p{font-size:1rem;color:#555;line-height:1.8;max-width:520px;margin:0 auto;}
+
+/* FAQ */
+.faq-sec{padding:80px 6vw 100px;}
+.faq-inner{max-width:760px;margin:0 auto;}
+
+.faq-group{margin-bottom:48px;}
+.faq-group-title{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6b21a8;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #ede9fe;}
+
+.faq-item{border:1px solid #f0f0f0;border-radius:14px;margin-bottom:10px;overflow:hidden;transition:border-color .2s;}
+.faq-item.open{border-color:#ede9fe;}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;
+  padding:20px 24px;cursor:pointer;font-family:inherit;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-size:.97rem;font-weight:700;color:#111;line-height:1.4;
+  transition:color .2s;
+}
+.faq-q:hover{color:#6b21a8;}
+.faq-item.open .faq-q{color:#6b21a8;}
+.faq-chevron{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  background:#f3e8ff;color:#6b21a8;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:800;transition:transform .25s,background .2s;
+}
+.faq-item.open .faq-chevron{transform:rotate(180deg);background:#6b21a8;color:#fff;}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease,padding .3s ease;
+  padding:0 24px;font-size:.93rem;color:#444;line-height:1.8;
+}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 22px;}
+
+/* FOOTER */
+footer{background:#111;padding:44px 6vw 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo img{height:28px;filter:brightness(0) invert(.7);}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap;}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.65);transition:color .2s;}
+.footer-links a:hover{color:#c084fc;}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.45);}
+
+@media(max-width:640px){
+  nav .nav-links{display:none;}
+  nav{padding:0 4vw;}
+  .nav-cta{padding:8px 14px;font-size:.8rem;}
+  .faq-sec{padding:60px 4vw 80px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/"><img src="images/scweb-logo-tight-final.png" alt="SCWeb" style="height:36px;"></a>
+  <ul class="nav-links">
+    <li><a href="/#sistema">Sistema</a></li>
+    <li><a href="/#prenatal">Pré-Natal Digital</a></li>
+    <li><a href="/#planos">Planos</a></li>
+    <li><a href="/#contato">Contato</a></li>
+  </ul>
+  <a href="/login" class="nav-cta">Acessar o Sistema</a>
+</nav>
+
+<main>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <span class="lbl">Ajuda</span>
+    <h1>Perguntas Frequentes</h1>
+    <p>Encontre respostas sobre o SCWeb. Não encontrou o que procura? Entre em contato pelo e-mail <a href="mailto:suporte@pndigital.com.br" style="color:#6b21a8;font-weight:600;">suporte@pndigital.com.br</a>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="faq-inner">
+
+    <!-- Acesso e Conta -->
+    <div class="faq-group">
+      <div class="faq-group-title">Acesso e Conta</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como faço login no SCWeb?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Acesse scweb.com.br pelo navegador do seu computador ou celular e insira seu e-mail e senha cadastrados. Não é necessário instalar nenhum programa.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Posso usar o SCWeb em mais de um dispositivo ao mesmo tempo?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. O SCWeb funciona no navegador e pode ser acessado simultaneamente de diferentes dispositivos — computador, tablet ou celular.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          O sistema funciona pelo celular?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. O SCWeb é responsivo e funciona em qualquer navegador moderno, sem necessidade de instalar aplicativo.</div>
+      </div>
+    </div>
+
+    <!-- Pacientes e Prontuário -->
+    <div class="faq-group">
+      <div class="faq-group-title">Pacientes e Prontuário</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como cadastrar um novo paciente?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">No menu lateral, acesse "Pacientes" e clique em "Novo Paciente". Preencha os dados e salve.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como registrar uma consulta no prontuário?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Acesse o prontuário do paciente e registre a consulta com anamnese, exame físico, hipóteses diagnósticas e conduta. O histórico fica salvo automaticamente.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          É possível ter mais de um prontuário por paciente?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. O SCWeb possui prontuário clínico geral e prontuário obstétrico separados, ideal para ginecologistas e obstetras.</div>
+      </div>
+    </div>
+
+    <!-- Receituários e Documentos -->
+    <div class="faq-group">
+      <div class="faq-group-title">Receituários e Documentos</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como emitir uma receita digital?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Acesse o menu "Receituários", clique em "Nova Receita", adicione os medicamentos e clique em "Gerar PDF". A receita pode ser impressa ou enviada digitalmente.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          O paciente recebe a receita por WhatsApp?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. Após gerar a receita, é possível enviar o link diretamente para o WhatsApp do paciente. Ele acessa a receita pelo celular sem precisar instalar nada.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como assinar digitalmente uma receita ou pedido de exame?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">O SCWeb integra com o BirdID para assinatura digital. Basta ter um certificado digital ICP-Brasil e clicar em "Assinar com BirdID" ao gerar o documento.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          O QR Code na receita serve para quê?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">O QR Code impresso na receita permite que o paciente ou a farmácia acesse a versão digital original do documento, confirmando sua autenticidade e validade.</div>
+      </div>
+    </div>
+
+    <!-- Agenda -->
+    <div class="faq-group">
+      <div class="faq-group-title">Agenda</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como configurar os horários de atendimento?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Em "Configurações", defina os dias e horários disponíveis para consulta. A agenda será gerada automaticamente com base nesses parâmetros.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como agendar um retorno para o paciente?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Diretamente pelo prontuário ou pela tela de Agenda, clique em "Novo Agendamento", selecione o paciente e o horário desejado.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          O sistema envia lembretes de consulta para os pacientes?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. O SCWeb pode enviar lembretes automáticos via e-mail para os pacientes 1 dia antes da consulta.</div>
+      </div>
+    </div>
+
+    <!-- Planos e Faturamento -->
+    <div class="faq-group">
+      <div class="faq-group-title">Planos e Faturamento</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Quais planos estão disponíveis?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Oferecemos dois tipos de planos: mensal e anual (mais econômico). Entre em contato pelo site e teste gratuitamente por 30 dias, sem cadastro no cartão de crédito.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como registrar convênios e gerar faturamento?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">No menu "Convênios", cadastre os planos de saúde atendidos. Em "Faturamento", registre os atendimentos e gere os relatórios para cobrança.</div>
+      </div>
+    </div>
+
+    <!-- Segurança e Dados -->
+    <div class="faq-group">
+      <div class="faq-group-title">Segurança e Dados</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Os dados dos pacientes são protegidos?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. Todos os dados são armazenados com criptografia e transmitidos via conexão segura (HTTPS). O acesso é restrito por usuário e senha.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          O SCWeb está em conformidade com a LGPD?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Sim. O SCWeb foi desenvolvido seguindo as diretrizes da Lei Geral de Proteção de Dados (LGPD), garantindo a privacidade e segurança das informações dos pacientes.</div>
+      </div>
+    </div>
+
+    <!-- Suporte -->
+    <div class="faq-group">
+      <div class="faq-group-title">Suporte</div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Como entro em contato com o suporte?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-a">Pelo e-mail <a href="mailto:suporte@pndigital.com.br" style="color:#6b21a8;font-weight:600;">suporte@pndigital.com.br</a> ou pelo formulário de contato disponível no site. Nossa equipe responde em horário comercial.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="images/scweb-logo-tight-final.png" alt="SCWeb"></div>
+    <div class="footer-links">
+      <a href="/#sistema">Sistema</a>
+      <a href="/#prenatal">Pré-Natal Digital</a>
+      <a href="/#contato">Contato</a>
+      <a href="/login">Acessar o Sistema</a>
+    </div>
+    <p class="footer-copy">© 2026 SCWeb · Ginecologia & Obstetrícia</p>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
