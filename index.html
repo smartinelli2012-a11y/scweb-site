@@ -24,16 +24,16 @@
 
 <title>SCWeb — Plataforma completa para Ginecologia & Obstetrícia</title>
 <meta name="description" content="SCWeb é uma plataforma web e mobile criada por ginecologista para clínicas de Ginecologia e Obstetrícia. Prontuário, agenda, pré-natal digital, laudos de USG, receitas com assinatura digital e muito mais.">
-<link rel="canonical" href="https://smartinelli2012-a11y.github.io/scweb-site/">
+<link rel="canonical" href="https://scweb.com.br">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://smartinelli2012-a11y.github.io/scweb-site/">
+<meta property="og:url" content="https://scweb.com.br">
 <meta property="og:title" content="SCWeb — Plataforma completa para Ginecologia & Obstetrícia">
 <meta property="og:description" content="Software de gestão criado por ginecologista. Prontuário, agenda, pré-natal digital, laudos, receitas e assinatura digital — tudo em um só lugar.">
-<meta property="og:image" content="images/Dashboard.png">
+<meta property="og:image" content="https://scweb.com.br/images/Dashboard.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SCWeb — Plataforma completa para Ginecologia & Obstetrícia">
 <meta name="twitter:description" content="Software de gestão criado por ginecologista. Prontuário, agenda, pré-natal digital, laudos, receitas e assinatura digital.">
-<meta name="twitter:image" content="images/Dashboard.png">
+<meta name="twitter:image" content="https://scweb.com.br/images/Dashboard.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -158,16 +158,6 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08);}
 .a-pt h4{font-size:.93rem;font-weight:700;color:#111;margin-bottom:2px;}
 .a-pt p{font-size:.85rem;color:#666;line-height:1.6;}
 
-/* EXAMES SECTION */
-.exames-sec{background:#fff;padding:96px 6vw;}
-.exames-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.exames-sec .h2{color:#111;}
-.exames-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
-.e-tag{background:#f3e8ff;color:#6b21a8;border:1px solid #ede9fe;border-radius:100px;padding:7px 14px;font-size:.82rem;font-weight:600;}
-.exames-abas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:1.5rem;}
-.aba{background:#fafafa;border:1px solid #f0f0f0;border-radius:10px;padding:10px 14px;font-size:.82rem;font-weight:600;color:#555;display:flex;align-items:center;gap:8px;}
-.aba::before{content:'';width:8px;height:8px;background:#6b21a8;border-radius:50%;flex-shrink:0;}
-
 /* PRENATAL */
 .prenatal{background:#111;padding:96px 6vw;}
 .prenatal-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
@@ -203,13 +193,6 @@ nav.scrolled{box-shadow:0 2px 16px rgba(0,0,0,.08);}
 .m-icon{font-size:1.4rem;margin-bottom:12px;}
 .m-card h3{font-size:.92rem;font-weight:700;color:#111;margin-bottom:5px;transition:color .25s;}
 .m-card p{font-size:.82rem;color:#777;line-height:1.6;transition:color .25s;}
-
-/* ASSINATURA DIGITAL */
-.birdi-sec{background:#f9f5ff;padding:72px 6vw;}
-.birdi-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4rem;}
-.birdi-icon{font-size:4rem;flex-shrink:0;}
-.birdi-text h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;color:#111;letter-spacing:-.025em;margin-bottom:.75rem;}
-.birdi-text p{color:#555;font-size:.97rem;line-height:1.8;max-width:600px;}
 
 /* QUOTE */
 .quote-sec{background:#fff;padding:96px 6vw;}
@@ -301,11 +284,10 @@ footer{background:#111;padding:44px 6vw 28px;}
 #lb-c{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.1);color:#fff;padding:9px 20px;border-radius:100px;font-size:.83rem;pointer-events:none;white-space:nowrap;}
 
 @media(max-width:1024px){
-  .hero-inner,.agenda-inner,.exames-inner,.prenatal-inner,.quote-inner,.contact-inner{grid-template-columns:1fr;gap:3rem;}
+  .hero-inner,.agenda-inner,.prenatal-inner,.quote-inner,.contact-inner{grid-template-columns:1fr;gap:3rem;}
   .gallery-grid,.diffs-grid{grid-template-columns:repeat(2,1fr);}
   .modules-grid{grid-template-columns:repeat(2,1fr);}
   .stats-bar-inner{grid-template-columns:repeat(2,1fr);}
-  .birdi-inner{flex-direction:column;gap:2rem;}
 }
 @media(max-width:640px){
   nav .nav-links{display:none;}
@@ -313,7 +295,6 @@ footer{background:#111;padding:44px 6vw 28px;}
   .nav-cta{padding:8px 14px;font-size:.8rem;}
   .gallery-grid,.diffs-grid,.modules-grid{grid-template-columns:1fr;}
   .fg-row{grid-template-columns:1fr;}
-  .exames-abas{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -330,7 +311,7 @@ footer{background:#111;padding:44px 6vw 28px;}
     <li><a href="#contato">Contato</a></li>
     <li><a href="./faq.html">FAQ</a></li>
   </ul>
-  <a href="https://scweb.com.br/login" class="nav-cta">Acessar o Sistema</a>
+  <a href="/login" class="nav-cta">Acessar o Sistema</a>
 </nav>
 
 <!-- HERO -->
@@ -377,33 +358,19 @@ footer{background:#111;padding:44px 6vw 28px;}
     <div class="carousel-wrap">
       <div class="carousel-track-outer">
         <div class="carousel-track" id="carTrack">
-          <div class="carousel-slide"><img loading="lazy" src="images/Dashboard.png" alt="Dashboard"><div class="carousel-caption"><strong>Dashboard</strong><span>Visão geral do dia em tempo real</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Agenda_integrada.png" alt="Agenda"><div class="carousel-caption"><strong>Agenda Integrada</strong><span>Grade completa com confirmação automática</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Gesta_o_de_Pacientes.png" alt="Pacientes"><div class="carousel-caption"><strong>Gestão de Pacientes</strong><span>Base completa com busca rápida</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Sala_de_Espera.png" alt="Sala de Espera"><div class="carousel-caption"><strong>Sala de Espera</strong><span>Fila com tempo de espera em tempo real</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Solicitacao_de_exames.png" alt="Solicitação de Exames"><div class="carousel-caption"><strong>Solicitação de Exames</strong><span>Atalhos por rotina clínica</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Exames_de_imagem.png" alt="Exames de Imagem"><div class="carousel-caption"><strong>Exames de Imagem</strong><span>USG, mamografia, densitometria e mais</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Exames_Laboratoriais_por_Data.png" alt="Exames Laboratoriais"><div class="carousel-caption"><strong>Exames Laboratoriais por Data</strong><span>Visualização comparativa por data</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Importacao_de_Exames_em_pdf.png" alt="Importação de Exames"><div class="carousel-caption"><strong>Importação de Exames em PDF</strong><span>DASA, Lavoisier, Fleury e mais</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Laudos_de_USG_e_Colposcopia.png" alt="Laudos"><div class="carousel-caption"><strong>Laudos de USG e Colposcopia</strong><span>Transvaginal, Morfológica, Mamária e mais</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/USGs_Obste_tricas.png" alt="USGs Obstétricas"><div class="carousel-caption"><strong>USGs Obstétricas</strong><span>Biometria, peso estimado e gráficos</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Ficha_Obste_trica_Completa.png" alt="Ficha Obstétrica"><div class="carousel-caption"><strong>Ficha Obstétrica Completa</strong><span>Consultas pré-natais com curvas</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Painel_de_Gestantes_em_acompanhamento.png" alt="Painel de Gestantes"><div class="carousel-caption"><strong>Painel de Gestantes</strong><span>IG, DPP, hospital e paridade</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Link_do_Cartao_de_Pre_-Natal_Digital.png" alt="Cartão Pré-Natal"><div class="carousel-caption"><strong>Cartão Pré-Natal Digital</strong><span>Link para a paciente pelo celular</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Controle_de_Glicemia_em_tempo_real_com_a_gestante.png" alt="Controle de Glicemia"><div class="carousel-caption"><strong>Controle de Glicemia em Tempo Real</strong><span>DMG com histórico semanal</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Ficha_Ginecolo_gica_Completa.png" alt="Ficha Ginecológica"><div class="carousel-caption"><strong>Ficha Ginecológica Completa</strong><span>Retornos, DIU, implanon e laser</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Receitua_rio.png" alt="Receituário"><div class="carousel-caption"><strong>Receituário</strong><span>Prescrição com assinatura digital</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Receituario_de_Controle_Especial.png" alt="Controle Especial"><div class="carousel-caption"><strong>Receituário de Controle Especial</strong><span>C1 e C2 com numeração automática</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Exames_Mastologia.png" alt="Mastologia"><div class="carousel-caption"><strong>Exames de Mastologia</strong><span>PAAF, Core Biópsia, Mamotomia e mais</span></div></div>
           <div class="carousel-slide"><img loading="lazy" src="images/Bioimpeda_ncia.png" alt="Bioimpedância"><div class="carousel-caption"><strong>Bioimpedância</strong><span>Evolução de peso, IMC e composição corporal</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Relato_rios_e_Documentos.png" alt="Relatórios"><div class="carousel-caption"><strong>Relatórios e Documentos</strong><span>Atestados, licenças e encaminhamentos</span></div></div>
-          <div class="carousel-slide"><img loading="lazy" src="images/Lembretes.png" alt="Lembretes"><div class="carousel-caption"><strong>Lembretes</strong><span>Recall automático por WhatsApp</span></div></div>
         </div>
       </div>
       <button class="carousel-btn prev" id="carPrev" aria-label="Slide anterior">‹</button>
       <button class="carousel-btn next" id="carNext" aria-label="Próximo slide">›</button>
       <div class="carousel-dots" id="carDots"></div>
-      <div class="carousel-counter" id="carCounter">1 / 21</div>
+      <div class="carousel-counter" id="carCounter">1 / 7</div>
     </div>
   </div>
 </section>
@@ -419,15 +386,10 @@ footer{background:#111;padding:44px 6vw 28px;}
     <div class="diffs-grid">
       <div class="d-card"><div class="d-icon">⚡</div><h3>Interativo e fácil de preencher</h3><p>Campos inteligentes, atalhos e fluxos pensados para a prática real. Menos tempo digitando, mais tempo com a paciente.</p></div>
       <div class="d-card"><div class="d-icon">📱</div><h3>Funciona no celular</h3><p>Leve toda sua clínica na palma da mão. Consulte agendamentos e prontuários de qualquer lugar, a qualquer hora.</p></div>
-      <div class="d-card"><div class="d-icon">✍️</div><h3>Assinatura Digital BirdID</h3><p>Assine digitalmente receitas, laudos, atestados e pedidos de exames. Não imprima mais nada.</p></div>
+      <div class="d-card"><div class="d-icon">✍️</div><h3>Assinatura Digital BirdID ou VIDaaS</h3><p>Assine digitalmente receitas, laudos, atestados e pedidos de exames com o certificado que preferir. Não imprima mais nada.</p></div>
       <div class="d-card"><div class="d-icon">🔬</div><h3>Laudos de USG completos</h3><p>Transvaginal, 1º Trimestre, Morfológica de 1º e 2º tri, USG 2º/3º tri, Mamária e Colposcopia — tudo incluído.</p></div>
-      <div class="d-card"><div class="d-icon">🤱</div><h3>Ficha Obstétrica completa</h3><p>Datação automática, biometria fetal, peso estimado, percentis, Doppler, curvas de IMC e altura uterina.</p></div>
-      <div class="d-card"><div class="d-icon">📋</div><h3>Ficha Ginecológica completa</h3><p>Medicações, retornos, diagnósticos, implanon, DIU, implantes hormonais, laserterapia e documentos digitalizados.</p></div>
-            <div class="d-card"><div class="d-icon">📲</div><h3>DMG Control — Glicemia em Tempo Real</h3><p>App integrado para controle de diabetes gestacional. A paciente registra os controles pelo celular e o médico acompanha em tempo real, sem sair do SCWeb.</p></div>
-      <div class="d-card"><div class="d-icon">⚖️</div><h3>Bioimpedância com Curvas Evolutivas</h3><p>Registre peso, IMC e composição corporal com gráficos comparativos ao longo do tempo. Acompanhe a evolução da paciente consulta a consulta.</p></div>
-      <div class="d-card"><div class="d-icon">💰</div><h3>Repasse Médico Automatizado</h3><p>Cálculo automático do repasse integrado ao faturamento da clínica. Transparência para o médico e menos trabalho administrativo.</p></div>
-      <div class="d-card"><div class="d-icon">💬</div><h3>Chat da Equipe</h3><p>Comunicação interna com toda a equipe da clínica diretamente pelo SCWeb — sem precisar sair do aplicativo ou usar grupos de WhatsApp.</p></div>
-      <div class="d-card"><div class="d-icon">👶</div><h3>Gestação Gemelar</h3><p>Acompanhamento especializado para gestações gemelares com fichas, curvas e biometrias individuais para cada bebê.</p></div>
+      <div class="d-card"><div class="d-icon">🤱</div><h3>Fichas Ginecológica e Obstétrica completas</h3><p>Datação automática, biometria fetal, Doppler e curvas de crescimento na Obstétrica; medicações, retornos, DIU, implanon e laserterapia na Ginecológica.</p></div>
+      <div class="d-card"><div class="d-icon">📲</div><h3>DMG Control — Glicemia em Tempo Real</h3><p>App integrado para controle de diabetes gestacional. A paciente registra os controles pelo celular e o médico acompanha em tempo real, sem sair do SCWeb.</p></div>
     </div>
   </div>
 </section>
@@ -453,42 +415,6 @@ footer{background:#111;padding:44px 6vw 28px;}
 </section>
 
 <!-- EXAMES -->
-<section class="exames-sec">
-  <div class="exames-inner">
-    <div>
-      <span class="lbl" style="color:#6b21a8;">Solicitação de Exames</span>
-      <h2 class="h2">Agilidade na solicitação com atalhos inteligentes</h2>
-      <p style="color:#666;font-size:.95rem;line-height:1.75;margin-top:.75rem;">Atalhos com as rotinas mais solicitadas, facilmente configuráveis. Solicite exames em segundos.</p>
-      <div class="exames-tags">
-        <span class="e-tag">Rotina &lt; 40 anos</span>
-        <span class="e-tag">Rotina &gt; 40 anos</span>
-        <span class="e-tag">Climatério</span>
-        <span class="e-tag">Pré-Natal</span>
-        <span class="e-tag">SOP</span>
-        <span class="e-tag">Osteopenia</span>
-        <span class="e-tag">Trombofilias</span>
-        <span class="e-tag">Implante Hormonal</span>
-      </div>
-      <p style="color:#555;font-size:.9rem;margin-top:1.5rem;font-weight:600;">Abas de registro de exames:</p>
-      <div class="exames-abas">
-        <div class="aba">Hemograma</div>
-        <div class="aba">Bioquímica</div>
-        <div class="aba">Hormônios</div>
-        <div class="aba">Sorologias</div>
-        <div class="aba">Urina</div>
-        <div class="aba">Mamografia/USG</div>
-        <div class="aba">USG Ginecológico</div>
-        <div class="aba">Densitometria</div>
-        <div class="aba">Tireoide/Abdome</div>
-        <div class="aba">Visualização por data</div>
-      </div>
-    </div>
-    <div class="hero-img">
-      <img loading="lazy" src="images/Solicitacao_de_exames.png" alt="Exames SCWeb">
-    </div>
-  </div>
-</section>
-
 <!-- PRENATAL -->
 <section class="prenatal" id="prenatal">
   <div class="prenatal-inner">
@@ -516,17 +442,6 @@ footer{background:#111;padding:44px 6vw 28px;}
     </div>
   </div>
 </section>
-
-<!-- ASSINATURA DIGITAL DESTAQUE -->
-<div class="birdi-sec">
-  <div class="birdi-inner">
-    <div class="birdi-icon">✍️</div>
-    <div class="birdi-text">
-      <h3 style="font-size:clamp(1.5rem,2.5vw,2rem);font-weight:800;color:#111;letter-spacing:-.025em;margin-bottom:.75rem;">Assinatura Digital BirdID — não imprima mais nada</h3>
-      <p>Assine digitalmente todos os documentos, receitas (incluindo controle especial), laudos, atestados, pedidos de exames e relatórios. Tudo com validade jurídica, diretamente pelo SCWeb.</p>
-    </div>
-  </div>
-</div>
 
 <!-- CONTACT -->
 <section class="planos" id="planos">
@@ -604,21 +519,13 @@ footer{background:#111;padding:44px 6vw 28px;}
     <div class="contact-form">
       <form id="form">
         <div class="fg"><label for="f-clinica">Nome da Clínica *</label><input id="f-clinica" name="clinica" type="text" placeholder="Nome da clínica" required></div>
-        <div class="fg"><label for="f-endereco">Endereço *</label><input id="f-endereco" name="endereco" type="text" placeholder="Rua, número, complemento" required></div>
-        <div class="fg-row">
-          <div class="fg"><label for="f-bairro">Bairro *</label><input id="f-bairro" name="bairro" type="text" placeholder="Bairro" required></div>
-          <div class="fg"><label for="f-cidade">Cidade *</label><input id="f-cidade" name="cidade" type="text" placeholder="Cidade" required></div>
-        </div>
-        <div class="fg-row">
-          <div class="fg"><label for="f-estado">Estado *</label><input id="f-estado" name="estado" type="text" placeholder="SP" maxlength="2" required></div>
-          <div class="fg"><label for="f-cep">CEP *</label><input id="f-cep" name="cep" type="text" placeholder="00000-000" required></div>
-        </div>
         <div class="fg"><label for="f-nome">Nome completo do Gestor *</label><input id="f-nome" name="nome" type="text" placeholder="Nome completo" required></div>
         <div class="fg-row">
           <div class="fg"><label for="f-email">E-mail do Gestor *</label><input id="f-email" name="email" type="email" placeholder="seu@email.com" required></div>
           <div class="fg"><label for="f-whatsapp">WhatsApp do Gestor *</label><input id="f-whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999" required></div>
         </div>
         <button type="submit" class="f-submit">Comece a usar gratuitamente →</button>
+        <p style="font-size:.75rem;color:#999;text-align:center;margin-top:10px;">Seus dados são protegidos e utilizados apenas para criação da sua conta. Conforme a LGPD.</p>
         <div class="f-ok" id="fok">🎉 Solicitação enviada! Você receberá o código TRIAL por email em breve.</div>
       </form>
     </div>
@@ -635,7 +542,7 @@ footer{background:#111;padding:44px 6vw 28px;}
       <a href="#prenatal">Pré-Natal Digital</a>
       <a href="#contato">Contato</a>
       <a href="./faq.html">FAQ</a>
-      <a href="https://scweb.com.br/login">Acessar o Sistema</a>
+      <a href="/login">Acessar o Sistema</a>
     </div>
     <p class="footer-copy">© 2026 SCWeb · Ginecologia & Obstetrícia</p>
   </div>
@@ -662,11 +569,6 @@ document.getElementById('form').addEventListener('submit',async function(e){
   btn.disabled=true;btn.textContent='Enviando...';
   var data={
     clinica:this.clinica.value,
-    endereco:this.endereco.value,
-    bairro:this.bairro.value,
-    cidade:this.cidade.value,
-    estado:this.estado.value,
-    cep:this.cep.value,
     nome:this.nome.value,
     email:this.email.value,
     whatsapp:this.whatsapp.value
@@ -757,6 +659,14 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft')goLb(-1);
   if(e.key==='ArrowRight')goLb(1);
 });
+
+// Auto-correção defensiva: garante que "Acessar o Sistema" sempre fique no
+// mesmo domínio da página (evita ir parar em produção quando testando em
+// homolog, caso o link volte a ser sincronizado com URL absoluta por engano).
+document.querySelectorAll('a[href^="https://scweb.com.br/login"]').forEach(function(a){
+  a.setAttribute('href', a.getAttribute('href').replace(/^https:\/\/scweb\.com\.br/, ''));
+});
 </script>
+<script src="chat-widget.js" defer></script>
 </body>
 </html>
